@@ -436,7 +436,7 @@ export const GARMENT_PIECES = [
     nameEn: "Woven Scarf",
     nameFr: "Écharpe Tissée",
     iconName: "scarf",
-    slot: "head",
+    slot: "neck",
     styleQuestionEn: "Which scarf texture and wrap style shall we weave?",
     styleQuestionFr: "Quel tissage et quel format d'écharpe vous feront chaud au cou ?",
     styles: [
@@ -487,7 +487,7 @@ export const GARMENT_PIECES = [
     nameEn: "Artisan Socks",
     nameFr: "Chaussettes d'Atelier",
     iconName: "socks",
-    slot: "shoes",
+    slot: "feet",
     styleQuestionEn: "Which sock height and ribbing do you prefer?",
     styleQuestionFr: "Quelle hauteur et quel tricotage préférez-vous pour vos pieds ?",
     styles: [
@@ -499,12 +499,51 @@ export const GARMENT_PIECES = [
   }
 ];
 
+// Explicit Slot Table Mapping for All Pieces
+export const SLOT_TABLE = {
+  // head: bonnet, casquette, chapeau, bandeau
+  bonnet: "head",
+  casquette: "head",
+  chapeau: "head",
+  bandeau: "head",
+
+  // neck: écharpe
+  echarpe: "neck",
+
+  // top: chemise, pull, t-shirt, hoodie, débardeur
+  chemise: "top",
+  pull: "top",
+  tshirt: "top",
+  hoodie: "top",
+  debardeur: "top",
+
+  // outerwear: veste, manteau, cardigan
+  veste: "outerwear",
+  manteau: "outerwear",
+  cardigan: "outerwear",
+
+  // bottom: pantalon, jean, short, jupe
+  pantalon: "bottom",
+  jean: "bottom",
+  short: "bottom",
+  jupe: "bottom",
+
+  // one-piece: robe (occupies top + bottom, so it removes any worn top and bottom)
+  robe: "onepiece",
+  costume: "onepiece",
+
+  // feet: chaussettes, chaussures
+  chaussettes: "feet",
+  chaussures: "feet"
+};
+
 // Starter wardrobe pieces for initial delight
 export const STARTER_PIECES = [
   {
     id: "starter_chemise_terracotta",
     pieceId: "chemise",
     category: "tops",
+    slot: "top",
     gender: "femme",
     colorId: "terracotta",
     colorHex: "#C2542B",
@@ -521,6 +560,7 @@ export const STARTER_PIECES = [
     id: "starter_pantalon_charcoal",
     pieceId: "pantalon",
     category: "bottoms",
+    slot: "bottom",
     gender: "both",
     colorId: "charcoal_slate",
     colorHex: "#3B3D43",
@@ -537,6 +577,7 @@ export const STARTER_PIECES = [
     id: "starter_bonnet_mustard",
     pieceId: "bonnet",
     category: "accessories",
+    slot: "head",
     gender: "both",
     colorId: "mustard_ochre",
     colorHex: "#CCA02A",

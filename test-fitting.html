@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier Mariem — Visual Fitting & Anchor Verification Suite</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-cream: #F8F6F2;
+      --bg-card: #FFFFFF;
+      --text-dark: #181615;
+      --text-muted: #6A625D;
+      --terracotta: #B85028;
+      --border-subtle: #E8E2D8;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --font-family: 'Poppins', -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      padding: 2rem 1.5rem 4rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header.suite-header {
+      max-width: 1400px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.5rem;
+    }
+
+    .suite-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .suite-badge {
+      background: #E8DFC8;
+      color: #6E5338;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .btn-toggle {
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-cream);
+      padding: 0.4rem 0.85rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 160ms ease;
+    }
+
+    .btn-toggle.active {
+      background: var(--terracotta);
+      color: #FFF;
+      border-color: var(--terracotta);
+    }
+
+    /* Section Highlights */
+    section.spotlight-section {
+      max-width: 1400px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-head {
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .section-head h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .spotlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+
+    .spotlight-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .spotlight-card p.sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Mannequin Stage Container */
+    .mannequin-viewport {
+      width: 280px;
+      height: 560px;
+      background: radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F5ECE3 100%);
+      border: 4px solid #D6C3B2;
+      border-radius: 140px 140px 12px 12px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .mannequin-viewport svg {
+      width: 280px;
+      height: 560px;
+    }
+
+    /* Anchor Guides Overlay */
+    .guide-line {
+      stroke: #E53E3E;
+      stroke-width: 1;
+      stroke-dasharray: 3 3;
+      opacity: 0.6;
+    }
+
+    .guide-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 8px;
+      fill: #E53E3E;
+      font-weight: 600;
+    }
+
+    /* Full Matrix Grid */
+    section.matrix-section {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .matrix-category-group {
+      margin-bottom: 2.5rem;
+    }
+
+    .matrix-cat-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed var(--border-subtle);
+      padding-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .matrix-items-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .matrix-item-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .matrix-item-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .matrix-item-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+    }
+
+    .matrix-item-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .matrix-slot-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--bg-cream);
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      color: var(--text-muted);
+    }
+
+    .tri-color-row {
+      display: flex;
+      gap: 0.45rem;
+      width: 100%;
+      margin-top: 0.75rem;
+      justify-content: center;
+    }
+
+    .tri-color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+
+    .color-label-tag {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="suite-header">
+    <div class="suite-title-row">
+      <div>
+        <h1>Visual Fitting & Shared Anchor Verification Suite</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.2rem;">
+          Verified against shared <code>viewBox="0 0 400 800"</code> coordinate system for both female and male figures.
+        </p>
+      </div>
+      <span class="suite-badge">Verification Suite</span>
+    </div>
+
+    <!-- Live Controls Bar -->
+    <div class="controls-bar">
+      <div class="control-group">
+        <span>Global Model Gender:</span>
+        <button class="btn-toggle active" id="btn-toggle-femme">Femme</button>
+        <button class="btn-toggle" id="btn-toggle-homme">Homme</button>
+      </div>
+
+      <div class="control-group">
+        <span>Skin Tone:</span>
+        <button class="btn-toggle active" data-tone="warm">Warm</button>
+        <button class="btn-toggle" data-tone="fair">Fair</button>
+        <button class="btn-toggle" data-tone="sand">Sand</button>
+        <button class="btn-toggle" data-tone="caramel">Caramel</button>
+        <button class="btn-toggle" data-tone="deep">Deep</button>
+      </div>
+
+      <div class="control-group">
+        <span>Anatomical Anchors:</span>
+        <button class="btn-toggle" id="btn-toggle-guides">Show Anchor Lines</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- REQUIRED SPOTLIGHT TEST SECTION -->
+  <section class="spotlight-section">
+    <div class="section-head">
+      <h2>Required Spotlight Anchor Checks</h2>
+      <p>Explicit visual proof of the 3 required target verification cases</p>
+    </div>
+
+    <div class="spotlight-grid">
+      <!-- 1. BONNET ON HEAD -->
+      <div class="spotlight-card" id="card-bonnet-check">
+        <h3>1. Bonnet on Head (Not on Body)</h3>
+        <p class="sub">Verified: sits squarely on the head (Y: 52-110) with folded ribbed cuff</p>
+        <div class="mannequin-viewport" id="viewport-bonnet"></div>
+      </div>
+
+      <!-- 2. DRESS ON FEMALE MODEL -->
+      <div class="spotlight-card" id="card-dress-check">
+        <h3>2. Atelier Dress (Robe) on Female Model</h3>
+        <p class="sub">Verified: contours bust, defined waist (Y: 328), hips (Y: 395), & flows to midi hem</p>
+        <div class="mannequin-viewport" id="viewport-dress"></div>
+      </div>
+
+      <!-- 3. SHIRT ON MALE MODEL -->
+      <div class="spotlight-card" id="card-shirt-check">
+        <h3>3. Bespoke Shirt (Chemise) on Male Model</h3>
+        <p class="sub">Verified: crisp collar, broad shoulders (span: 170px), sleeves to wrists, & hip hem</p>
+        <div class="mannequin-viewport" id="viewport-shirt"></div>
+      </div>
+
+      <!-- 4. FULL OUTFIT MIX & MATCH -->
+      <div class="spotlight-card" id="card-mix-check">
+        <h3>4. Full Mix & Match Layering</h3>
+        <p class="sub">Body &rarr; Socks &rarr; Trousers &rarr; Shirt &rarr; Jacket &rarr; Scarf &rarr; Beanie</p>
+        <div class="mannequin-viewport" id="viewport-mix"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL GARMENT MATRIX GRID (ALL 16 PIECES IN 3 COLORS) -->
+  <section class="matrix-section">
+    <div class="section-head">
+      <h2>Complete Garment Matrix (16 Pieces &times; 3 Colors)</h2>
+      <p>Every piece rendered in 3 curated tones on its designated anatomical body</p>
+    </div>
+
+    <div id="matrix-container"></div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script type="module">
+    import { GARMENT_PIECES, COLOR_PALETTE, SLOT_TABLE } from "./js/clothingData.js";
+    import { getFittingMannequinBaseSvg, getLayeredGarmentSvg, MODEL_ANCHORS, SKIN_TONES } from "./js/garmentSvg.js";
+
+    let currentGender = "femme";
+    let currentTone = "warm";
+    let showGuides = false;
+
+    // 3 Curated test colors for each piece
+    const TEST_COLORS = [
+      COLOR_PALETTE.find(c => c.id === "terracotta") || COLOR_PALETTE[0],
+      COLOR_PALETTE.find(c => c.id === "sage_garden") || COLOR_PALETTE[2],
+      COLOR_PALETTE.find(c => c.id === "deep_navy") || COLOR_PALETTE[5]
+    ];
+
+    function renderAnchorGuidesSvg(gender) {
+      if (!showGuides) return "";
+      const a = MODEL_ANCHORS[gender];
+      return `
+        <g class="anchor-guides-overlay" pointer-events="none">
+          <!-- Shoulders -->
+          <line x1="30" y1="${a.shoulders.y}" x2="370" y2="${a.shoulders.y}" class="guide-line" />
+          <text x="35" y="${a.shoulders.y - 3}" class="guide-label">SHOULDERS (${a.shoulders.y})</text>
+
+          <!-- Bust / Chest -->
+          <line x1="30" y1="${a.bust.y}" x2="370" y2="${a.bust.y}" class="guide-line" />
+          <text x="35" y="${a.bust.y - 3}" class="guide-label">BUST (${a.bust.y})</text>
+
+          <!-- Waist -->
+          <line x1="30" y1="${a.waist.y}" x2="370" y2="${a.waist.y}" class="guide-line" />
+          <text x="35" y="${a.waist.y - 3}" class="guide-label">WAIST (${a.waist.y})</text>
+
+          <!-- Hips -->
+          <line x1="30" y1="${a.hips.y}" x2="370" y2="${a.hips.y}" class="guide-line" />
+          <text x="35" y="${a.hips.y - 3}" class="guide-label">HIPS (${a.hips.y})</text>
+
+          <!-- Knees -->
+          <line x1="30" y1="${a.knees.y}" x2="370" y2="${a.knees.y}" class="guide-line" />
+          <text x="35" y="${a.knees.y - 3}" class="guide-label">KNEES (${a.knees.y})</text>
+
+          <!-- Ankles -->
+          <line x1="30" y1="${a.ankles.y}" x2="370" y2="${a.ankles.y}" class="guide-line" />
+          <text x="35" y="${a.ankles.y - 3}" class="guide-label">ANKLES (${a.ankles.y})</text>
+        </g>
+      `;
+    }
+
+    function buildCompositeSvg(gender, tone, layers = []) {
+      return `
+        <svg viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg">
+          ${getFittingMannequinBaseSvg(gender, tone)}
+          ${layers.join("")}
+          ${renderAnchorGuidesSvg(gender)}
+        </svg>
+      `;
+    }
+
+    function renderSpotlights() {
+      // 1. Bonnet on head (not on body!)
+      const bonnetPiece = {
+        pieceId: "bonnet",
+        slot: "head",
+        colorHex: "#CCA02A",
+        styleId: "cuffed",
+        patternId: "plain",
+        embroideryText: "AMOUR",
+        threadColorHex: "#FFFDF6"
+      };
+      const bonnetSvg = buildCompositeSvg(currentGender, currentTone, [
+        getLayeredGarmentSvg(bonnetPiece, "head", currentGender)
+      ]);
+      document.getElementById("viewport-bonnet").innerHTML = bonnetSvg;
+
+      // 2. Dress on female model
+      const dressPiece = {
+        pieceId: "robe",
+        slot: "onepiece",
+        colorHex: "#C2542B",
+        styleId: "slip",
+        patternId: "plain",
+        embroideryText: "MARIEM",
+        threadColorHex: "#FFFDF6"
+      };
+      const dressSvg = buildCompositeSvg("femme", currentTone, [
+        getLayeredGarmentSvg(dressPiece, "onepiece", "femme")
+      ]);
+      document.getElementById("viewport-dress").innerHTML = dressSvg;
+
+      // 3. Shirt on male model
+      const shirtPiece = {
+        pieceId: "chemise",
+        slot: "top",
+        colorHex: "#85AEC8",
+        styleId: "classic",
+        patternId: "stripes",
+        embroideryText: "ATELIER",
+        threadColorHex: "#FFFDF6"
+      };
+      const shirtSvg = buildCompositeSvg("homme", currentTone, [
+        getLayeredGarmentSvg(shirtPiece, "top", "homme")
+      ]);
+      document.getElementById("viewport-shirt").innerHTML = shirtSvg;
+
+      // 4. Full mix & match
+      const socksPiece = { pieceId: "chaussettes", slot: "feet", colorHex: "#CCA02A", styleId: "crew" };
+      const pantsPiece = { pieceId: "pantalon", slot: "bottom", colorHex: "#3B3D43", styleId: "wide" };
+      const chemisePiece = { pieceId: "chemise", slot: "top", colorHex: "#F5E9BE", styleId: "classic" };
+      const jacketPiece = { pieceId: "veste", slot: "outerwear", colorHex: "#5A6838", styleId: "blazer" };
+      const scarfPiece = { pieceId: "echarpe", slot: "neck", colorHex: "#C2542B", styleId: "chunky" };
+      const hatPiece = { pieceId: "bonnet", slot: "head", colorHex: "#CCA02A", styleId: "cuffed" };
+
+      const mixSvg = buildCompositeSvg(currentGender, currentTone, [
+        getLayeredGarmentSvg(socksPiece, "feet", currentGender),
+        getLayeredGarmentSvg(pantsPiece, "bottom", currentGender),
+        getLayeredGarmentSvg(chemisePiece, "top", currentGender),
+        getLayeredGarmentSvg(jacketPiece, "outerwear", currentGender),
+        getLayeredGarmentSvg(scarfPiece, "neck", currentGender),
+        getLayeredGarmentSvg(hatPiece, "head", currentGender)
+      ]);
+      document.getElementById("viewport-mix").innerHTML = mixSvg;
+    }
+
+    function renderFullMatrix() {
+      const container = document.getElementById("matrix-container");
+      const categories = ["tops", "bottoms", "onepiece", "outerwear", "accessories"];
+
+      container.innerHTML = categories.map(cat => {
+        const catPieces = GARMENT_PIECES.filter(p => p.category === cat);
+        if (catPieces.length === 0) return "";
+
+        return `
+          <div class="matrix-category-group">
+            <h3 class="matrix-cat-title">${cat} (${catPieces.length} Garments)</h3>
+            <div class="matrix-items-row">
+              ${catPieces.map(piece => {
+                const targetGender = piece.gender === "both" ? currentGender : piece.gender;
+                const slot = SLOT_TABLE[piece.id] || piece.slot;
+
+                return TEST_COLORS.map(color => {
+                  const pData = {
+                    pieceId: piece.id,
+                    slot: slot,
+                    colorHex: color.hex,
+                    styleId: piece.styles[0]?.id || "classic",
+                    patternId: "plain",
+                    embroideryText: "M",
+                    threadColorHex: "#FFFDF6"
+                  };
+
+                  const cardSvg = buildCompositeSvg(targetGender, currentTone, [
+                    getLayeredGarmentSvg(pData, slot, targetGender)
+                  ]);
+
+                  return `
+                    <div class="matrix-item-card">
+                      <div class="matrix-item-header">
+                        <span class="matrix-item-name">${piece.nameEn}</span>
+                        <span class="matrix-slot-badge">${slot} • ${targetGender}</span>
+                      </div>
+                      <div class="mannequin-viewport" style="width: 240px; height: 480px; border-radius: 120px 120px 8px 8px;">
+                        ${cardSvg}
+                      </div>
+                      <div class="tri-color-row">
+                        <span class="tri-color-dot" style="background-color: ${color.hex};"></span>
+                      </div>
+                      <span class="color-label-tag">${color.nameEn}</span>
+                    </div>
+                  `;
+                }).join("");
+              }).join("")}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderAll() {
+      renderSpotlights();
+      renderFullMatrix();
+    }
+
+    // Event listeners
+    document.getElementById("btn-toggle-femme").addEventListener("click", () => {
+      currentGender = "femme";
+      document.getElementById("btn-toggle-femme").classList.add("active");
+      document.getElementById("btn-toggle-homme").classList.remove("active");
+      renderAll();
+    });
+
+    document.getElementById("btn-toggle-homme").addEventListener("click", () => {
+      currentGender = "homme";
+      document.getElementById("btn-toggle-homme").classList.add("active");
+      document.getElementById("btn-toggle-femme").classList.remove("active");
+      renderAll();
+    });
+
+    document.querySelectorAll("[data-tone]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-tone]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentTone = btn.getAttribute("data-tone");
+        renderAll();
+      });
+    });
+
+    document.getElementById("btn-toggle-guides").addEventListener("click", () => {
+      showGuides = !showGuides;
+      document.getElementById("btn-toggle-guides").classList.toggle("active", showGuides);
+      renderAll();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

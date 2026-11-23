@@ -577,6 +577,103 @@ export function getMariemSvg(pose = "greeting", options = {}) {
     `;
   }
 
+  // Bonus Pose: "blowing a kiss" / cute kissy-face pose from reference photo
+  if (pose === "kiss" || pose === "kissy") {
+    return `
+      <svg class="mariem-character-svg pose-kiss ${className}" viewBox="0 0 380 460" width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mariem blowing a playful kiss">
+        ${defs}
+        <!-- Sparkle Kiss Magic -->
+        <g class="kiss-sparkles">
+          <circle cx="120" cy="210" r="3.5" fill="#FFD700" />
+          <path d="M120,202 L120,218 M112,210 L128,210" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" />
+          <circle cx="95" cy="190" r="2.5" fill="#E8998D" />
+          <circle cx="135" cy="180" r="2" fill="#FFD700" />
+        </g>
+
+        <!-- Back Hair Volume (Dense Cascading Corkscrew Curls) -->
+        <g class="hair-back">
+          <ellipse cx="190" cy="185" rx="116" ry="130" fill="url(#mariemHairDark)" />
+          <circle cx="100" cy="175" r="46" fill="url(#mariemHairAuburn)" />
+          <circle cx="88" cy="235" r="50" fill="url(#mariemHairDark)" />
+          <circle cx="96" cy="295" r="44" fill="url(#mariemHairAuburn)" />
+          <circle cx="275" cy="175" r="46" fill="url(#mariemHairAuburn)" />
+          <circle cx="288" cy="235" r="50" fill="url(#mariemHairDark)" />
+          <circle cx="278" cy="295" r="44" fill="url(#mariemHairAuburn)" />
+        </g>
+
+        <!-- Torso & Black Streetwear Tee -->
+        <g class="body-group">
+          <path d="M135,315 L105,460 L275,460 L245,315 Q190,330 135,315 Z" fill="url(#teeGrad)" />
+          <path d="M172,255 L172,310 Q190,320 208,310 L208,255 Z" fill="url(#mariemSkinGrad)" />
+          <path d="M158,310 Q190,332 222,310" fill="none" stroke="#2E2E32" stroke-width="8" />
+
+          <!-- Left Arm raised towards lips blowing a kiss -->
+          <g class="arm-kiss-left">
+            <path d="M115,330 Q80,310 110,260 L128,275 Q105,315 130,335 Z" fill="url(#teeGrad)" />
+            <path d="M110,260 Q125,235 152,242 L146,258 Q130,252 124,270 Z" fill="url(#mariemSkinGrad)" />
+            <!-- Hand near lips -->
+            <ellipse cx="152" cy="242" rx="10" ry="12" fill="url(#mariemSkinGrad)" />
+            <path d="M148,236 Q156,228 162,234" stroke="#E2B2A0" stroke-width="1.2" fill="none" />
+          </g>
+
+          <!-- Right Arm resting relaxed -->
+          <g class="arm-right">
+            <path d="M265,330 Q295,380 285,440 L250,440 Q255,390 245,340 Z" fill="url(#teeGrad)" />
+          </g>
+        </g>
+
+        <!-- Head tilted playfully (like in photo) -->
+        <g class="head-group" transform="rotate(-3 190 170)">
+          <!-- Rounded soft face -->
+          <path d="M146,165 C146,115 162,100 190,100 C218,100 234,115 234,165 C234,220 218,260 190,260 C162,260 146,220 146,165 Z" fill="url(#mariemSkinGrad)" />
+          <!-- Warm Cheek Blushes -->
+          <ellipse cx="158" cy="204" rx="16" ry="10" fill="url(#mariemBlush)" />
+          <ellipse cx="222" cy="204" rx="16" ry="10" fill="url(#mariemBlush)" />
+
+          <!-- Playful Eyebrows -->
+          <path d="M154,152 Q166,144 178,150" fill="none" stroke="#261413" stroke-width="3" stroke-linecap="round" />
+          <path d="M202,148 Q214,142 226,152" fill="none" stroke="#261413" stroke-width="3" stroke-linecap="round" />
+
+          <!-- Playful Wink: Left Eye Winking Crescent, Right Eye Open Sparkling -->
+          <!-- Left Eye (Wink) -->
+          <path d="M158,175 Q168,166 178,175" fill="none" stroke="#1A0D0C" stroke-width="3.2" stroke-linecap="round" />
+          <!-- Right Eye (Open with Light Hazel sparkle) -->
+          <ellipse cx="214" cy="174" rx="8" ry="7" fill="#FFFFFF" />
+          <ellipse cx="213" cy="174" rx="5.5" ry="5.5" fill="#2E1C16" />
+          <circle cx="215" cy="172" r="2.2" fill="#FFFFFF" />
+          <path d="M205,170 Q214,164 223,170" fill="none" stroke="#1A0D0C" stroke-width="2.2" stroke-linecap="round" />
+
+          <!-- Nose -->
+          <path d="M188,184 Q190,194 185,198 Q190,200 195,198" fill="none" stroke="#DCA290" stroke-width="2.2" stroke-linecap="round" />
+
+          <!-- The Reference Photo Signature Cute Kissy Pout Lips -->
+          <g class="mouth-kissy">
+            <ellipse cx="190" cy="222" rx="7.5" ry="6.5" fill="#C25A5A" />
+            <ellipse cx="190" cy="222" rx="4.5" ry="3.5" fill="#7D2424" />
+            <ellipse cx="190" cy="225" rx="5.5" ry="3" fill="#D97070" />
+            <ellipse cx="190" cy="226" rx="2" ry="1" fill="#FFC7C7" opacity="0.9" />
+          </g>
+
+          <!-- Tortoiseshell Round Glasses -->
+          <g class="glasses-group">
+            <path d="M178,170 Q190,164 202,170" fill="none" stroke="url(#tortoiseGrad)" stroke-width="3" stroke-linecap="round" />
+            <circle cx="166" cy="174" r="17" fill="none" stroke="url(#tortoiseGrad)" stroke-width="3.6" />
+            <circle cx="166" cy="174" r="15" fill="#8CE8FF" opacity="0.12" />
+            <circle cx="214" cy="174" r="17" fill="none" stroke="url(#tortoiseGrad)" stroke-width="3.6" />
+            <circle cx="214" cy="174" r="15" fill="#8CE8FF" opacity="0.12" />
+          </g>
+        </g>
+
+        <!-- Front Cascading Ringlets -->
+        <g class="hair-front">
+          <path d="M152,122 Q166,106 188,114 Q172,128 162,138 Z" fill="url(#mariemHairAuburn)" />
+          <circle cx="104" cy="270" r="16" fill="url(#mariemHairAuburn)" />
+          <circle cx="276" cy="270" r="16" fill="url(#mariemHairAuburn)" />
+        </g>
+      </svg>
+    `;
+  }
+
   // Default fallback
   return getMariemSvg("greeting", options);
 }

@@ -3,7 +3,7 @@
 // Centralized state, localStorage persistence & reactive event dispatch
 // ==========================================================================
 
-import { STARTER_PIECES, COLOR_PALETTE } from "./clothingData.js";
+import { STARTER_PIECES, COLOR_PALETTE, SLOT_TABLE } from "./clothingData.js";
 
 const WARDROBE_STORAGE_KEY = "atelier_wardrobe_items";
 const SAVED_OUTFIT_KEY = "atelier_saved_outfit";
@@ -103,7 +103,21 @@ class AppState {
     try {
       const data = localStorage.getItem(SAVED_OUTFIT_KEY);
       if (data) {
-        return JSON.parse(data);
+        const parsed = JSON.parse(data);
+        // Ensure all slots exist including neck and feet
+        return {
+          gender: parsed.gender || "femme",
+          skinTone: parsed.skinTone || "warm",
+          slots: {
+            head: parsed.slots?.head || null,
+            neck: parsed.slots?.neck || null,
+            top: parsed.slots?.top || null,
+            bottom: parsed.slots?.bottom || null,
+            onepiece: parsed.slots?.onepiece || null,
+            outerwear: parsed.slots?.outerwear || null,
+            feet: parsed.slots?.feet || parsed.slots?.shoes || null
+          }
+        };
       }
     } catch (e) {
       // fallback
@@ -113,11 +127,12 @@ class AppState {
       skinTone: "warm",
       slots: {
         head: null,
+        neck: null,
         top: null,
         bottom: null,
-        outerwear: null,
         onepiece: null,
-        shoes: null
+        outerwear: null,
+        feet: null
       }
     };
   }
@@ -136,7 +151,16 @@ class AppState {
   }
 
   equipPiece(piece) {
-    const slot = piece.slot || "top";
+    if (!piece) return;
+    const slot = SLOT_TABLE[piece.pieceId] || piece.slot || "top";
+    piece.slot = slot;
+
+    // Switch model automatically based on garment gender
+    if (piece.gender === "femme" && this.fittingRoom.gender !== "femme") {
+      this.fittingRoom.gender = "femme";
+    } else if (piece.gender === "homme" && this.fittingRoom.gender !== "homme") {
+      this.fittingRoom.gender = "homme";
+    }
 
     // If equipping a dress or suit (onepiece), clear separate top and bottom
     if (slot === "onepiece") {
@@ -166,11 +190,12 @@ class AppState {
   resetFittingOutfit() {
     this.fittingRoom.slots = {
       head: null,
+      neck: null,
       top: null,
       bottom: null,
-      outerwear: null,
       onepiece: null,
-      shoes: null
+      outerwear: null,
+      feet: null
     };
     this.saveFittingState();
     this.emit("fittingRoomChanged", this.fittingRoom);

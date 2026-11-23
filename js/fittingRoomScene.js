@@ -8,6 +8,7 @@ import { t, getLang } from "./i18n.js";
 import { state } from "./state.js";
 import { playSound } from "./audio.js";
 import { icon } from "./icons.js";
+import { SLOT_TABLE } from "./clothingData.js";
 
 export class FittingRoomController {
   constructor(container) {
@@ -27,11 +28,12 @@ export class FittingRoomController {
     const filteredWardrobe = this.activeDrawerFilter === "all"
       ? wardrobeItems
       : wardrobeItems.filter(item => {
-          if (this.activeDrawerFilter === "tops") return item.category === "tops";
-          if (this.activeDrawerFilter === "bottoms") return item.category === "bottoms";
-          if (this.activeDrawerFilter === "outerwear") return item.category === "outerwear";
-          if (this.activeDrawerFilter === "onepiece") return item.category === "onepiece";
-          if (this.activeDrawerFilter === "accessories") return item.category === "accessories";
+          const slot = item.slot || SLOT_TABLE[item.pieceId];
+          if (this.activeDrawerFilter === "tops") return item.category === "tops" || slot === "top";
+          if (this.activeDrawerFilter === "bottoms") return item.category === "bottoms" || slot === "bottom";
+          if (this.activeDrawerFilter === "outerwear") return item.category === "outerwear" || slot === "outerwear";
+          if (this.activeDrawerFilter === "onepiece") return item.category === "onepiece" || slot === "onepiece";
+          if (this.activeDrawerFilter === "accessories") return item.category === "accessories" || slot === "head" || slot === "neck" || slot === "feet";
           return true;
         });
 
@@ -80,8 +82,9 @@ export class FittingRoomController {
 
               <div class="skin-tone-group">
                 <span class="tone-label">${t("model_skin_tone")}</span>
-                <button class="tone-dot ${outfit.skinTone === 'fair' ? 'active' : ''}" data-tone="fair" style="background-color: #FDEDE4;" title="Fair"></button>
+                <button class="tone-dot ${outfit.skinTone === 'fair' ? 'active' : ''}" data-tone="fair" style="background-color: #FDF0E8;" title="Fair"></button>
                 <button class="tone-dot ${outfit.skinTone === 'warm' ? 'active' : ''}" data-tone="warm" style="background-color: #F5DDD1;" title="Warm"></button>
+                <button class="tone-dot ${outfit.skinTone === 'sand' ? 'active' : ''}" data-tone="sand" style="background-color: #E4BA97;" title="Sand"></button>
                 <button class="tone-dot ${outfit.skinTone === 'caramel' ? 'active' : ''}" data-tone="caramel" style="background-color: #C68E65;" title="Caramel"></button>
                 <button class="tone-dot ${outfit.skinTone === 'deep' ? 'active' : ''}" data-tone="deep" style="background-color: #6F4532;" title="Deep"></button>
               </div>
@@ -92,27 +95,30 @@ export class FittingRoomController {
               <div class="mirror-arch-frame">
                 <div class="mirror-ambient-glow"></div>
 
-                <!-- Layered Mannequin SVG -->
-                <svg id="mannequin-composite-svg" viewBox="0 0 350 480" width="310" height="425" xmlns="http://www.w3.org/2000/svg">
+                <!-- Layered Mannequin SVG (Shared 0 0 400 800 Coordinate System) -->
+                <svg id="mannequin-composite-svg" viewBox="0 0 400 800" width="300" height="600" xmlns="http://www.w3.org/2000/svg">
                   <!-- Layer 1: Mannequin Base Body -->
                   ${getFittingMannequinBaseSvg(outfit.gender, outfit.skinTone)}
 
-                  <!-- Layer 2: Shoes & Socks -->
-                  ${outfit.slots.shoes ? getLayeredGarmentSvg(outfit.slots.shoes, "shoes", outfit.gender) : ""}
+                  <!-- Layer 2: Feet (Socks & Atelier Footwear) -->
+                  ${outfit.slots.feet ? getLayeredGarmentSvg(outfit.slots.feet, "feet", outfit.gender) : ""}
 
-                  <!-- Layer 3: Bottom (if not onepiece) -->
+                  <!-- Layer 3: Bottom (Pants, Jeans, Skirts, Shorts - if not onepiece) -->
                   ${outfit.slots.bottom ? getLayeredGarmentSvg(outfit.slots.bottom, "bottom", outfit.gender) : ""}
 
-                  <!-- Layer 4: Top (if not onepiece) -->
+                  <!-- Layer 4: Top (Shirts, Sweaters, Tees, Hoodies - if not onepiece) -->
                   ${outfit.slots.top ? getLayeredGarmentSvg(outfit.slots.top, "top", outfit.gender) : ""}
 
-                  <!-- Layer 5: One-Piece (Dress or Full Suit) -->
+                  <!-- Layer 5: One-Piece (Bespoke Dress or Full Suit) -->
                   ${outfit.slots.onepiece ? getLayeredGarmentSvg(outfit.slots.onepiece, "onepiece", outfit.gender) : ""}
 
-                  <!-- Layer 6: Outerwear (Coats & Jackets) -->
+                  <!-- Layer 6: Outerwear (Jackets & Overcoats) -->
                   ${outfit.slots.outerwear ? getLayeredGarmentSvg(outfit.slots.outerwear, "outerwear", outfit.gender) : ""}
 
-                  <!-- Layer 7: Head & Neck Accessories -->
+                  <!-- Layer 7: Neck (Woven Scarf) -->
+                  ${outfit.slots.neck ? getLayeredGarmentSvg(outfit.slots.neck, "neck", outfit.gender) : ""}
+
+                  <!-- Layer 8: Head Accessories (Bonnet, Casquette) -->
                   ${outfit.slots.head ? getLayeredGarmentSvg(outfit.slots.head, "head", outfit.gender) : ""}
                 </svg>
 
@@ -121,18 +127,19 @@ export class FittingRoomController {
               </div>
             </div>
 
-            <!-- Active Slots Badges Row -->
+            <!-- Active Slots Badges Row with dedicated remove buttons -->
             <div class="equipped-slots-summary">
               ${this.renderEquippedSlotPill("head", outfit.slots.head, t("slot_head"))}
+              ${this.renderEquippedSlotPill("neck", outfit.slots.neck, lang === 'fr' ? 'Écharpe' : 'Scarf')}
               ${outfit.slots.onepiece
-                ? this.renderEquippedSlotPill("onepiece", outfit.slots.onepiece, "Dress/Suit")
+                ? this.renderEquippedSlotPill("onepiece", outfit.slots.onepiece, lang === 'fr' ? 'Robe / Costume' : 'Dress / Suit')
                 : `
                   ${this.renderEquippedSlotPill("top", outfit.slots.top, t("slot_top"))}
                   ${this.renderEquippedSlotPill("bottom", outfit.slots.bottom, t("slot_bottom"))}
                 `
               }
               ${this.renderEquippedSlotPill("outerwear", outfit.slots.outerwear, t("slot_outerwear"))}
-              ${this.renderEquippedSlotPill("shoes", outfit.slots.shoes, t("slot_shoes"))}
+              ${this.renderEquippedSlotPill("feet", outfit.slots.feet, lang === 'fr' ? 'Chaussettes' : 'Socks')}
             </div>
           </div>
 
@@ -329,12 +336,13 @@ export class FittingRoomController {
     if (items.length === 0) return;
 
     // Pick a random top or onepiece
-    const onepieces = items.filter(i => i.slot === "onepiece");
-    const tops = items.filter(i => i.slot === "top");
-    const bottoms = items.filter(i => i.slot === "bottom");
-    const outerwear = items.filter(i => i.slot === "outerwear");
-    const head = items.filter(i => i.slot === "head");
-    const shoes = items.filter(i => i.slot === "shoes");
+    const onepieces = items.filter(i => (i.slot || SLOT_TABLE[i.pieceId]) === "onepiece");
+    const tops = items.filter(i => (i.slot || SLOT_TABLE[i.pieceId]) === "top");
+    const bottoms = items.filter(i => (i.slot || SLOT_TABLE[i.pieceId]) === "bottom");
+    const outerwear = items.filter(i => (i.slot || SLOT_TABLE[i.pieceId]) === "outerwear");
+    const neck = items.filter(i => (i.slot || SLOT_TABLE[i.pieceId]) === "neck");
+    const head = items.filter(i => (i.slot || SLOT_TABLE[i.pieceId]) === "head");
+    const feet = items.filter(i => (i.slot || SLOT_TABLE[i.pieceId]) === "feet");
 
     if (onepieces.length > 0 && Math.random() > 0.6) {
       const p = onepieces[Math.floor(Math.random() * onepieces.length)];
@@ -351,11 +359,14 @@ export class FittingRoomController {
     if (outerwear.length > 0 && Math.random() > 0.4) {
       state.equipPiece(outerwear[Math.floor(Math.random() * outerwear.length)]);
     }
+    if (neck.length > 0 && Math.random() > 0.4) {
+      state.equipPiece(neck[Math.floor(Math.random() * neck.length)]);
+    }
     if (head.length > 0 && Math.random() > 0.5) {
       state.equipPiece(head[Math.floor(Math.random() * head.length)]);
     }
-    if (shoes.length > 0 && Math.random() > 0.4) {
-      state.equipPiece(shoes[Math.floor(Math.random() * shoes.length)]);
+    if (feet.length > 0 && Math.random() > 0.4) {
+      state.equipPiece(feet[Math.floor(Math.random() * feet.length)]);
     }
   }
 
@@ -370,10 +381,10 @@ export class FittingRoomController {
 
     const img = new Image();
     img.onload = () => {
-      // Create high-res Lookbook Polaroid Canvas
+      // Create high-res Lookbook Polaroid Canvas (640 x 920 with 1:2 model ratio)
       const canvas = document.createElement("canvas");
-      canvas.width = 600;
-      canvas.height = 760;
+      canvas.width = 640;
+      canvas.height = 920;
       const ctx = canvas.getContext("2d");
 
       // Polaroid Paper Background
@@ -381,33 +392,33 @@ export class FittingRoomController {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Inner Photo Border with soft warm studio gradient
-      const grad = ctx.createLinearGradient(40, 40, 560, 600);
+      const grad = ctx.createLinearGradient(40, 40, 600, 750);
       grad.addColorStop(0, "#F5EFEB");
       grad.addColorStop(1, "#EED8C9");
       ctx.fillStyle = grad;
-      ctx.fillRect(40, 40, 520, 560);
+      ctx.fillRect(40, 40, 560, 710);
 
       // Arch decorative border
       ctx.strokeStyle = "#D96B43";
       ctx.lineWidth = 3;
-      ctx.strokeRect(40, 40, 520, 560);
+      ctx.strokeRect(40, 40, 560, 710);
 
-      // Draw the SVG character centered
-      ctx.drawImage(img, 145, 70, 310, 480);
+      // Draw the SVG character centered in 1:2 aspect ratio (340 x 680)
+      ctx.drawImage(img, 150, 55, 340, 680);
 
       // Polaroid Bottom Text - Clean Architectural Typography (Poppins)
       ctx.fillStyle = "#181615";
       ctx.font = "600 24px 'Poppins', sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("ATELIER MARIEM", 300, 646);
+      ctx.fillText("ATELIER MARIEM", 320, 795);
 
       ctx.fillStyle = "#B85028";
       ctx.font = "500 13px 'Poppins', sans-serif";
-      ctx.fillText("Bespoke Couture Archive • " + new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase(), 300, 674);
+      ctx.fillText("Bespoke Couture Archive • " + new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase(), 320, 825);
 
       ctx.fillStyle = "#5E5652";
       ctx.font = "400 12px 'Poppins', sans-serif";
-      ctx.fillText("Architectural tailoring with reinforced french seams", 300, 704);
+      ctx.fillText("Architectural tailoring with reinforced french seams", 320, 856);
 
       // Download file
       const pngURL = canvas.toDataURL("image/png");
