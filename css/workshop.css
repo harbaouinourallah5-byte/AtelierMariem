@@ -1,0 +1,434 @@
+/* ==========================================================================
+   Atelier Mariem - Workshop Scene Stylesheet
+   Typography: Poppins exclusively
+   Aesthetic: Precision crafting atelier, mechanical sewing animations,
+   Pinterest moodboard celebration & uniform button heights
+   ========================================================================== */
+
+.scene-workshop {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Confetti Fullscreen Canvas */
+.confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Workshop Header */
+.workshop-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.workshop-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.workshop-sub {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.btn-fast-forward {
+  border: 1px solid var(--border-strong);
+  color: var(--text-dark);
+  height: 38px;
+}
+
+.btn-fast-forward:hover {
+  background-color: var(--bg-cream-alt);
+  border-color: var(--text-dark);
+}
+
+/* Workbench Stage Container */
+.workshop-stage {
+  background: linear-gradient(180deg, #F8F6F2 0%, #F1ECE4 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 3rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Active Workbench Layout */
+.workbench-layout {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  gap: 2.5rem;
+  width: 100%;
+  align-items: center;
+}
+
+/* Banter & Textbook Column */
+.workshop-banter-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.workshop-bubble-card {
+  background: #FFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.6rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  animation: banterBubbleFloat 3s infinite ease-in-out alternate;
+}
+
+.workshop-bubble-card::after {
+  content: '';
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 9px solid #FFF;
+}
+
+@keyframes banterBubbleFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-5px); }
+}
+
+.bubble-sparkle {
+  color: var(--terracotta);
+  display: inline-flex;
+  margin-bottom: 0.4rem;
+}
+
+.workshop-banter-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* Textbook Glance Card */
+.workshop-textbook-card {
+  background: var(--navy-tailor);
+  color: #FFF;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  box-shadow: var(--shadow-sm);
+  opacity: 0.35;
+  transform: scale(0.97);
+  transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid transparent;
+}
+
+.workshop-textbook-card.visible-glance {
+  opacity: 1;
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(24, 34, 54, 0.3);
+  border-color: var(--terracotta);
+}
+
+.book-mini-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.3rem;
+}
+
+.book-mini-icon {
+  color: var(--gold-ochre);
+  display: flex;
+}
+
+.book-mini-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold-ochre);
+}
+
+.book-mini-body {
+  font-size: 0.78rem;
+  color: #E2E8F0;
+  line-height: 1.4;
+}
+
+/* Center Mariem Sewing Col */
+.workshop-mariem-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.mariem-sewing-holder {
+  width: 310px;
+  height: 340px;
+  margin-bottom: -100px;
+  z-index: 2;
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.1));
+}
+
+/* Mechanical Sewing Machine Animations */
+.animated-machine-bench {
+  z-index: 5;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));
+}
+
+/* Rapid Needle Oscillation */
+.needle-rapid-bounce {
+  animation: needleBob 0.14s infinite alternate ease-in-out;
+  transform-origin: top center;
+}
+
+@keyframes needleBob {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(12px); }
+}
+
+/* Rapid Flywheel Rotation */
+.machine-flywheel-active {
+  animation: flywheelSpinFast 0.28s infinite linear;
+}
+
+@keyframes flywheelSpinFast {
+  100% { transform: rotate(360deg); }
+}
+
+/* Sliding Fabric Motion */
+.fabric-slide-motion {
+  animation: fabricSlide 1.2s infinite linear;
+}
+
+@keyframes fabricSlide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(18px); }
+}
+
+.thread-vibrate {
+  animation: threadHum 0.16s infinite ease-in-out;
+}
+
+@keyframes threadHum {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.05); }
+}
+
+/* ================= CELEBRATION / FINISHED VIEW ================= */
+.workbench-celebration-view {
+  width: 100%;
+  animation: celebrationSlideIn 450ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes celebrationSlideIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.celebration-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.tada-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tada-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tada-icon .icon {
+  width: 40px;
+  height: 40px;
+}
+
+.tada-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.tada-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.celebration-showcase-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.celebration-avatar-box {
+  width: 290px;
+  height: 320px;
+  filter: drop-shadow(0 14px 28px rgba(0,0,0,0.12));
+}
+
+.celebration-garment-card {
+  background: var(--bg-cream-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.garment-card-preview {
+  width: 190px;
+  height: 220px;
+}
+
+.garment-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.meta-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.04em;
+}
+
+.meta-detail {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.meta-tag {
+  background: var(--bg-cream-alt);
+  color: var(--text-dark);
+  border: 1px solid var(--border-strong);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.meta-tag-icon {
+  color: var(--terracotta);
+  display: flex;
+}
+
+/* Aligned Large Button Heights (52px) */
+.celebration-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.celebration-actions .btn {
+  height: var(--btn-h-large);
+  min-height: var(--btn-h-large);
+}
+
+/* ================= PROGRESS FOOTER ================= */
+.workshop-progress-footer {
+  background: var(--bg-cream-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 2rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.progress-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.progress-percent {
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.craft-progress-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-cream-alt);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.craft-progress-bar {
+  height: 100%;
+  background: var(--text-dark);
+  border-radius: var(--radius-full);
+  transition: width 100ms linear;
+}
+
+/* Responsive */
+@media (max-width: 820px) {
+  .workbench-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .workshop-bubble-card::after {
+    display: none;
+  }
+
+  .workshop-stage {
+    padding: 1.5rem 1rem;
+  }
+
+  .celebration-showcase-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}

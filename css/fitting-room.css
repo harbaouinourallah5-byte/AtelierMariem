@@ -1,0 +1,462 @@
+/* ==========================================================================
+   Atelier Mariem - Fitting Room Stylesheet
+   Mirror stage, layered SVG mannequin, equipped slot pills,
+   interactive closet rack, mix & match controls & polaroid styling
+   ========================================================================== */
+
+.scene-fitting {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* ================= HEADER & CONTROLS ================= */
+.fitting-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.fitting-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--text-dark);
+}
+
+.fitting-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.fitting-top-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.fitting-top-controls .btn {
+  height: var(--btn-h-default);
+  min-height: var(--btn-h-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1.15rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ================= MAIN FITTING LAYOUT ================= */
+.fitting-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* ================= LEFT COLUMN: MANNEQUIN MIRROR ================= */
+.mannequin-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-cream-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  align-items: center;
+}
+
+/* Model Customization Bar */
+.model-custom-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  border-bottom: 1px dashed var(--border-subtle);
+  padding-bottom: 0.85rem;
+}
+
+.gender-toggle-group {
+  display: flex;
+  background: var(--bg-cream-alt);
+  padding: 3px;
+  border-radius: var(--radius-full);
+}
+
+.gender-btn {
+  border: none;
+  background: transparent;
+  padding: 0 0.85rem;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.gender-btn.active {
+  background: var(--terracotta);
+  color: #FFF;
+  box-shadow: var(--shadow-sm);
+}
+
+.skin-tone-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.tone-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.tone-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.tone-dot:hover {
+  transform: scale(1.2);
+}
+
+.tone-dot.active {
+  border: 2px solid var(--terracotta);
+  box-shadow: 0 0 0 2px var(--terracotta-soft);
+  transform: scale(1.15);
+}
+
+/* Mirror Arch Stage */
+.mannequin-mirror-stage {
+  position: relative;
+  width: 330px;
+  height: 460px;
+  background: radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F5ECE3 100%);
+  border: 6px solid #D6C3B2;
+  border-radius: 165px 165px 16px 16px;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.06), 0 12px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding-bottom: 12px;
+}
+
+.mirror-ambient-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: radial-gradient(ellipse at top, rgba(255, 240, 210, 0.5) 0%, rgba(255, 240, 210, 0) 70%);
+  pointer-events: none;
+}
+
+#mannequin-composite-svg {
+  position: relative;
+  z-index: 5;
+  filter: drop-shadow(0 10px 18px rgba(38, 30, 28, 0.12));
+}
+
+.mannequin-floor-stand {
+  position: absolute;
+  bottom: 8px;
+  width: 90px;
+  height: 12px;
+  background: #A87A54;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Equipped Slot Badges */
+.equipped-slots-summary {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.slot-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-cream);
+}
+
+.slot-pill.occupied {
+  background: var(--bg-cream-alt);
+  border-color: var(--border-strong);
+}
+
+.slot-pill.empty {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.slot-label {
+  font-weight: 700;
+  color: var(--text-light);
+  min-width: 95px;
+}
+
+.slot-piece-name {
+  font-weight: 700;
+  color: var(--text-dark);
+  flex: 1;
+}
+
+.slot-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  margin-right: 0.45rem;
+  flex-shrink: 0;
+}
+
+.btn-unequip-slot {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 0.2rem;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.btn-unequip-slot:hover {
+  color: #E53E3E;
+}
+
+/* ================= RIGHT COLUMN: INTERACTIVE CLOSET RACK ================= */
+.wardrobe-rack-col {
+  width: 100%;
+}
+
+.closet-rack-panel {
+  background: var(--bg-cream-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.rack-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.rack-header .btn {
+  height: var(--btn-h-sm);
+  min-height: var(--btn-h-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.rack-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--text-dark);
+}
+
+.rack-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+/* Drawer Filter Pills */
+.drawer-filters-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.drawer-filter {
+  background: var(--bg-cream);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.drawer-filter:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+.drawer-filter.active {
+  background-color: var(--terracotta);
+  color: #FFF;
+  border-color: var(--terracotta);
+}
+
+/* Rack Items Grid */
+.rack-items-scroll {
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+.rack-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.95rem;
+}
+
+.rack-item-card {
+  background: var(--bg-cream);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.rack-item-card:hover {
+  border-color: var(--terracotta);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.rack-item-card.is-worn {
+  border-color: var(--sage-green);
+  background-color: #F0FDF4;
+  box-shadow: 0 0 0 2px var(--sage-green);
+}
+
+.rack-item-preview {
+  width: 90px;
+  height: 105px;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rack-item-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+}
+
+.rack-item-name {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text-dark);
+}
+
+.rack-item-style {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.rack-item-status {
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-warm-tint);
+  color: var(--terracotta-dark);
+}
+
+.rack-item-card.is-worn .rack-item-status {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.rack-empty-message {
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Responsive Fitting Layout */
+@media (max-width: 860px) {
+  .fitting-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mannequin-col {
+    width: 100%;
+  }
+
+  .fitting-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fitting-top-controls {
+    width: 100%;
+  }
+
+  .fitting-top-controls .btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .mannequin-col {
+    padding: 1rem 0.75rem;
+  }
+
+  .mannequin-mirror-stage {
+    width: 280px;
+    height: 410px;
+  }
+
+  #mannequin-composite-svg {
+    width: 260px;
+    height: 380px;
+  }
+
+  .rack-items-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+}
