@@ -5,7 +5,7 @@
 // Pinterest atelier aesthetic, uniform button heights, zero emojis
 // ==========================================================================
 
-import { getMariemSvg } from "./characterSvg.js";
+import { getMariemSvg, getMariemAvatarImg } from "./characterSvg.js";
 import { getStandaloneGarmentSvg, getSvgPatternDefs } from "./garmentSvg.js";
 import { dialogueEngine } from "./dialogueEngine.js";
 import { icon } from "./icons.js";
@@ -139,7 +139,7 @@ export class WorkshopController {
               <div class="celebration-showcase-row">
                 <!-- Proud Pose Avatar -->
                 <div class="celebration-avatar-box">
-                  ${getMariemSvg("proud", { width: "100%", height: "100%", garmentPiece: order })}
+                  ${getMariemAvatarImg("proud", { width: "100%", height: "100%", className: "celebration-proud-img" })}
                 </div>
 
                 <!-- Finished Garment Card -->

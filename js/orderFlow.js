@@ -8,7 +8,7 @@
 // Pro-coded, uniform button heights, Pinterest atelier aesthetic, zero emojis
 // ==========================================================================
 
-import { getMariemSvg } from "./characterSvg.js";
+import { getMariemSvg, getMariemAvatarImg } from "./characterSvg.js";
 import { COLOR_PALETTE, GARMENT_PIECES, PATTERNS, EMBROIDERY_PRESETS, THREAD_COLORS } from "./clothingData.js";
 import { dialogueEngine } from "./dialogueEngine.js";
 import { icon } from "./icons.js";
@@ -60,7 +60,7 @@ export class OrderFlowController {
                 <span class="avatar-title">Mariem • Tailoring Desk</span>
               </div>
               <div class="avatar-svg-box" id="order-avatar-box">
-                ${getMariemSvg("talking", { width: "100%", height: "100%" })}
+                ${getMariemAvatarImg("talking", { width: "100%", height: "100%", className: "chat-avatar-main" })}
               </div>
               <div class="mariem-student-note">
                 <span class="note-icon">${icon("ruler")}</span>
@@ -93,6 +93,12 @@ export class OrderFlowController {
     this.runStep(this.currentStep);
   }
 
+  setMariemPose(pose) {
+    const box = this.container.querySelector("#order-avatar-box");
+    if (!box) return;
+    box.innerHTML = getMariemAvatarImg(pose, { width: "100%", height: "100%", className: "chat-avatar-main" });
+  }
+
   async runStep(stepNumber) {
     this.currentStep = stepNumber;
     this.updateStepper();
@@ -105,6 +111,7 @@ export class OrderFlowController {
     choicesTarget.innerHTML = "";
 
     if (stepNumber === 1) {
+      this.setMariemPose("talking");
       // Step 1: Greeting + Gender
       const greeting = dialogueEngine.getRandomLine("greetings");
       const question = t("prompt_gender");
@@ -114,18 +121,21 @@ export class OrderFlowController {
       this.renderStep1Choices(choicesTarget);
 
     } else if (stepNumber === 2) {
+      this.setMariemPose("thinking");
       // Step 2: Choose Color First
       const question = t("prompt_color");
       await dialogueEngine.displayMariemMessage(dialogueTarget, question);
       this.renderStep2Choices(choicesTarget);
 
     } else if (stepNumber === 3) {
+      this.setMariemPose("talking");
       // Step 3: Choose Piece
       const question = t("prompt_piece");
       await dialogueEngine.displayMariemMessage(dialogueTarget, question);
       this.renderStep3Choices(choicesTarget);
 
     } else if (stepNumber === 4) {
+      this.setMariemPose("thinking");
       // Step 4: Choose Style
       const pieceData = GARMENT_PIECES.find(p => p.id === state.currentOrder.pieceId) || GARMENT_PIECES[0];
       const lang = getLang();
@@ -134,6 +144,7 @@ export class OrderFlowController {
       this.renderStep4Choices(choicesTarget, pieceData);
 
     } else if (stepNumber === 5) {
+      this.setMariemPose("wink");
       // Step 5: Pattern & Details
       const question = t("prompt_pattern");
       await dialogueEngine.displayMariemMessage(dialogueTarget, question);
@@ -153,7 +164,8 @@ export class OrderFlowController {
     if (fill) fill.style.width = `${(this.currentStep / 5) * 100}%`;
   }
 
-  showReaction(comment, onNext) {
+  showReaction(comment, onNext, reactionPose = "laugh") {
+    this.setMariemPose(reactionPose);
     const reactionTarget = this.container.querySelector("#mariem-reaction-target");
     if (reactionTarget) {
       reactionTarget.style.display = "block";
@@ -167,7 +179,7 @@ export class OrderFlowController {
     }
     setTimeout(() => {
       onNext();
-    }, 900);
+    }, 950);
   }
 
   // ================= STEP 1: GENDER =================
@@ -198,7 +210,7 @@ export class OrderFlowController {
         const reaction = dialogueEngine.getRandomLine("gender_reactions");
         this.showReaction(reaction, () => {
           this.runStep(2);
-        });
+        }, "wink");
       });
     });
   }
@@ -349,7 +361,7 @@ export class OrderFlowController {
         const reaction = dialogueEngine.getRandomLine("color_reactions");
         this.showReaction(reaction, () => {
           this.runStep(3);
-        });
+        }, "surprised");
       });
     }
   }
@@ -430,7 +442,7 @@ export class OrderFlowController {
         const reaction = dialogueEngine.getRandomLine("piece_reactions");
         this.showReaction(reaction, () => {
           this.runStep(4);
-        });
+        }, "laugh");
       });
     });
   }
@@ -464,7 +476,7 @@ export class OrderFlowController {
         const reaction = dialogueEngine.getRandomLine("style_reactions");
         this.showReaction(reaction, () => {
           this.runStep(5);
-        });
+        }, "proud");
       });
     });
   }
@@ -579,7 +591,7 @@ export class OrderFlowController {
         const reaction = dialogueEngine.getRandomLine("embroidery_reactions");
         this.showReaction(reaction, () => {
           state.emit("navigateScene", "workshop");
-        });
+        }, "kiss");
       });
     }
   }

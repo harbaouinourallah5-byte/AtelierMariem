@@ -216,7 +216,7 @@ export function renderStudioScene(container) {
           <span data-i18n="quick_fitting_btn">${t("quick_fitting_btn")}</span>
         </button>
         <button class="btn btn-ghost btn-large" id="btn-open-about-mariem">
-          <img src="assets/me.png" alt="Mariem" class="btn-mini-avatar" />
+          <img src="assets/mariem/bust-wink.png" alt="Mariem" class="btn-mini-avatar" />
           <span data-i18n="meet_mariem_btn">${t("meet_mariem_btn")}</span>
         </button>
       </div>
