@@ -1,6 +1,6 @@
 // ==========================================================================
-// Atelier Mariem - Main Application Controller
-// Orchestrates scene routing, header controls, sound, i18n & About modal
+// Atelier Mariem - Main Application Controller (100% Français)
+// Orchestration du routage des scènes, audio, modale À Propos & traductions
 // ==========================================================================
 
 import { renderStudioScene } from "./studioScene.js";
@@ -9,7 +9,7 @@ import { WorkshopController } from "./workshopScene.js";
 import { WardrobeController } from "./wardrobeScene.js";
 import { FittingRoomController } from "./fittingRoomScene.js";
 import { state } from "./state.js";
-import { t, getLang, setLang } from "./i18n.js";
+import { t } from "./fr.js";
 import { toggleAudioMute, isAudioMuted, playSound } from "./audio.js";
 import { icon } from "./icons.js";
 
@@ -29,8 +29,8 @@ class AtelierApp {
     this.setupEventListeners();
 
     this.updateWardrobeBadge();
-    this.updateLanguageButton();
     this.updateSoundButton();
+    this.updateStaticTranslations();
 
     // Start on Studio home scene
     this.navigateTo("studio");
@@ -55,16 +55,6 @@ class AtelierApp {
         toggleAudioMute();
         this.updateSoundButton();
         if (!isAudioMuted()) playSound("click");
-      });
-    }
-
-    // Language Toggle
-    const langBtn = document.getElementById("btn-toggle-lang");
-    if (langBtn) {
-      langBtn.addEventListener("click", () => {
-        playSound("click");
-        const nextLang = getLang() === "en" ? "fr" : "en";
-        setLang(nextLang);
       });
     }
 
@@ -132,17 +122,6 @@ class AtelierApp {
     state.on("wardrobeChanged", () => {
       this.updateWardrobeBadge();
     });
-
-    document.addEventListener("languageChanged", () => {
-      this.updateLanguageButton();
-      this.updateStaticTranslations();
-      // Re-render current scene with updated language smoothly
-      if (state.currentScene === "order" && this.orderController) {
-        this.orderController.reRender();
-      } else {
-        this.navigateTo(state.currentScene);
-      }
-    });
   }
 
   updateWardrobeBadge() {
@@ -154,15 +133,6 @@ class AtelierApp {
     }
   }
 
-  updateLanguageButton() {
-    const langBtn = document.getElementById("btn-toggle-lang");
-    if (langBtn) {
-      const current = getLang();
-      langBtn.innerHTML = `${icon("globe", 16, 16)} <span class="lang-text">${current === "en" ? "FR" : "EN"}</span>`;
-      langBtn.title = t("lang_toggle");
-    }
-  }
-
   updateSoundButton() {
     const soundBtn = document.getElementById("btn-toggle-sound");
     if (soundBtn) {
@@ -170,6 +140,7 @@ class AtelierApp {
       soundBtn.innerHTML = icon(muted ? "volumeX" : "volume", 18, 18);
       soundBtn.classList.toggle("muted", muted);
       soundBtn.title = t("sound_toggle");
+      soundBtn.setAttribute("aria-label", t("sound_toggle"));
     }
   }
 

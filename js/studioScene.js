@@ -12,7 +12,7 @@ import { playSound } from "./audio.js";
 
 export function renderStudioScene(container) {
   container.innerHTML = `
-    <section class="scene scene-studio" id="scene-studio" aria-label="Mariem's Studio & Drafting Workshop">
+    <section class="scene scene-studio" id="scene-studio" aria-label="Atelier de Confection de Mariem">
       <!-- Ambient Studio Lighting Overlay -->
       <div class="studio-ambient-light"></div>
 
@@ -98,7 +98,7 @@ export function renderStudioScene(container) {
         </div>
 
         <!-- Central Character Stage: Mariem (Seated Behind Desk) -->
-        <div class="mariem-character-container" id="mariem-character-trigger" role="button" tabindex="0" aria-label="Tap Mariem to start conversation">
+        <div class="mariem-character-container" id="mariem-character-trigger" role="button" tabindex="0" aria-label="Cliquer sur Mariem pour échanger">
           <!-- Idle Thought Bubble Floating Above Her -->
           <div class="mariem-speech-bubble" id="mariem-idle-bubble">
             <span class="bubble-sparkle">${icon("needle")}</span>
@@ -107,12 +107,12 @@ export function renderStudioScene(container) {
 
           <!-- Mariem's Illustrated PNG Avatar (Behind Desk, Head & Shoulders Sit Comfortably Above) -->
           <div class="mariem-image-holder">
-            ${getMariemAvatarImg("neutral", { className: "studio-mariem-portrait", alt: "Mariem in her studio" })}
+            ${getMariemAvatarImg("neutral", { className: "studio-mariem-portrait", alt: "Mariem dans son atelier" })}
           </div>
         </div>
 
         <!-- Mariem's Drafting & Sewing Workstation Desk (In Front of Character) -->
-        <div class="studio-desk-area" id="studio-desk-trigger" role="button" tabindex="0" aria-label="Start custom sewing order">
+        <div class="studio-desk-area" id="studio-desk-trigger" role="button" tabindex="0" aria-label="Lancer une confection sur-mesure">
           <!-- Studio Wooden Desk Tabletop -->
           <div class="wooden-desk">
             <!-- Brass Desk Lamp with Warm Cone of Light -->
@@ -136,7 +136,7 @@ export function renderStudioScene(container) {
             </div>
 
             <!-- Steaming Ceramic Coffee Mug -->
-            <div class="coffee-mug" title="Double espresso">
+            <div class="coffee-mug" title="Double expresso bien serré">
               <div class="steam steam-1"></div>
               <div class="steam steam-2"></div>
               <div class="steam steam-3"></div>

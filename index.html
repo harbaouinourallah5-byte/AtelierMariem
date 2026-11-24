@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atelier Mariem — Bespoke Couture & Architecture Studio</title>
-  <meta name="description" content="A curated atelier by Mariem, architecture student and bespoke tailor. Custom order tailored garments, view mechanical atelier construction, and style silhouettes in the interactive fitting suite." />
+  <title>Atelier Mariem — Haute Confection & Studio d'Architecture</title>
+  <meta name="description" content="L'atelier de confection de Mariem, étudiante en architecture et modéliste. Créez votre vêtement sur-mesure, assistez à sa confection mécanique et essayez vos tenues en cabine d'essayage virtuelle." />
 
   <!-- Favicon with Architectural Monogram -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 44 44%22 fill=%22none%22><rect width=%2244%22 height=%2244%22 rx=%2210%22 fill=%22%23181615%22/><path d=%22M11 31V17C11 14.2 13.2 12 16 12C18.8 12 21 14.2 21 17V31M23 31V17C23 14.2 25.2 12 28 12C30.8 12 33 14.2 33 17V31%22 stroke=%22%23F5F2EB%22 stroke-width=%222.5%22 stroke-linecap=%22round%22/><circle cx=%2222%22 cy=%2224%22 r=%222%22 fill=%22%23C2542B%22/></svg>" />
@@ -15,12 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet" />
 
   <!-- Modular CSS Files -->
-  <link rel="stylesheet" href="css/styles.css?v=7" />
-  <link rel="stylesheet" href="css/studio.css?v=7" />
-  <link rel="stylesheet" href="css/conversation.css?v=7" />
-  <link rel="stylesheet" href="css/workshop.css?v=7" />
-  <link rel="stylesheet" href="css/wardrobe.css?v=7" />
-  <link rel="stylesheet" href="css/fitting-room.css?v=7" />
+  <link rel="stylesheet" href="css/styles.css?v=8" />
+  <link rel="stylesheet" href="css/studio.css?v=8" />
+  <link rel="stylesheet" href="css/conversation.css?v=8" />
+  <link rel="stylesheet" href="css/workshop.css?v=8" />
+  <link rel="stylesheet" href="css/wardrobe.css?v=8" />
+  <link rel="stylesheet" href="css/fitting-room.css?v=8" />
 </head>
 <body>
   <div class="atelier-app-root">
@@ -28,7 +28,7 @@
     <header class="atelier-navbar">
       <div class="navbar-inner">
         <!-- Brand / Studio Logo -->
-        <a href="#studio" class="navbar-brand" id="brand-logo-link" aria-label="Atelier Mariem Home">
+        <a href="#studio" class="navbar-brand" id="brand-logo-link" aria-label="Accueil Atelier Mariem">
           <div class="brand-monogram-container" id="brand-logo-slot">
             <svg class="brand-vector-logo" width="38" height="38" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="44" height="44" rx="10" fill="#181615" />
@@ -41,36 +41,36 @@
           </div>
           <div class="brand-text-block">
             <h1 class="brand-name" data-i18n="brand_title">Atelier Mariem</h1>
-            <span class="brand-tagline" data-i18n="brand_subtitle">Bespoke Couture & Architecture Studio</span>
+            <span class="brand-tagline" data-i18n="brand_subtitle">Haute Confection & Studio d'Architecture</span>
           </div>
         </a>
 
         <!-- Scene Navigation Links (Vector Line Icons, Zero Emojis) -->
-        <nav class="navbar-navigation" aria-label="Main Navigation">
+        <nav class="navbar-navigation" aria-label="Navigation principale">
           <ul class="navbar-nav">
             <li>
               <a href="#studio" class="nav-link active" data-scene="studio">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                <span data-i18n="nav_studio">Studio</span>
+                <span data-i18n="nav_studio">Atelier</span>
               </a>
             </li>
             <li>
               <a href="#order" class="nav-link" data-scene="order">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
-                <span data-i18n="nav_order">Custom Order</span>
+                <span data-i18n="nav_order">Sur-Mesure</span>
               </a>
             </li>
             <li>
               <a href="#wardrobe" class="nav-link" data-scene="wardrobe">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="12" y1="2" x2="12" y2="22"></line><line x1="9" y1="10" x2="9" y2="12"></line><line x1="15" y1="10" x2="15" y2="12"></line></svg>
-                <span data-i18n="nav_wardrobe">Wardrobe</span>
-                <span class="nav-counter-badge" id="nav-wardrobe-count" aria-label="Wardrobe items count">3</span>
+                <span data-i18n="nav_wardrobe">Garde-Robe</span>
+                <span class="nav-counter-badge" id="nav-wardrobe-count" aria-label="Nombre de pièces dans la garde-robe">3</span>
               </a>
             </li>
             <li>
               <a href="#fitting" class="nav-link" data-scene="fitting">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a2 2 0 0 1 2 2c0 1.5-1.5 2-2 3l-8 7.5a1 1 0 0 0 .7 1.5h18.6a1 1 0 0 0 .7-1.5L12 9"></path></svg>
-                <span data-i18n="nav_fitting">Fitting Room</span>
+                <span data-i18n="nav_fitting">Cabine d'Essayage</span>
               </a>
             </li>
           </ul>
@@ -79,20 +79,14 @@
         <!-- Right Quick Controls -->
         <div class="navbar-controls">
           <!-- Sound Toggle (Web Audio API) -->
-          <button class="btn-ctrl" id="btn-toggle-sound" title="Toggle audio ambience" aria-label="Toggle audio">
+          <button class="btn-ctrl" id="btn-toggle-sound" title="Activer ou couper l'ambiance sonore" aria-label="Ambiance sonore">
             <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
           </button>
 
-          <!-- Language Switcher (EN / FR) -->
-          <button class="btn-ctrl" id="btn-toggle-lang" title="Switch language" aria-label="Switch language">
-            <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            <span class="lang-text" id="nav-lang-label">FR</span>
-          </button>
-
           <!-- About Mariem Button (with Circular Avatar Crop) -->
-          <button class="btn-ctrl btn-about-pill" id="btn-nav-about" title="Meet Mariem" aria-label="About Mariem">
+          <button class="btn-ctrl btn-about-pill" id="btn-nav-about" title="À Propos de Mariem" aria-label="À Propos de Mariem">
             <img src="assets/mariem/bust-wink.png" alt="Mariem" class="avatar-mini-crop" />
-            <span data-i18n="nav_about">About</span>
+            <span data-i18n="nav_about">À Propos</span>
           </button>
         </div>
       </div>
@@ -104,36 +98,36 @@
     <!-- About Mariem Modal (Pinterest / Luxury Editorial Lookbook Card) -->
     <div class="modal-backdrop" id="about-mariem-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="about-modal-heading">
       <div class="modal-sheet">
-        <button class="modal-close-corner" id="btn-close-about-modal" aria-label="Close modal">
+        <button class="modal-close-corner" id="btn-close-about-modal" aria-label="Fermer la fenêtre">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
 
         <div class="about-hero-row">
-          <img src="assets/me.png" alt="Mariem with round glasses and curly hair" class="about-portrait-circle" />
+          <img src="assets/me.png" alt="Mariem avec lunettes rondes et cheveux bouclés" class="about-portrait-circle" />
           <div class="about-titles-col">
-            <span class="about-kicker">Couture & Structural Design</span>
-            <h3 id="about-modal-heading" data-i18n="about_title">Bonjour, I'm Mariem</h3>
-            <p class="about-sub-role" data-i18n="about_subtitle">Architecture student by day, tailor and patternmaker by night</p>
+            <span class="about-kicker">Haute Confection & Architecture</span>
+            <h3 id="about-modal-heading" data-i18n="about_title">Bonjour, je suis Mariem</h3>
+            <p class="about-sub-role" data-i18n="about_subtitle">Étudiante en architecture le jour, modéliste et couturière la nuit</p>
           </div>
         </div>
 
         <p class="about-bio-body" data-i18n="about_bio">
-          Welcome to my studio corner. Between structural mechanics evaluations and urban theory seminars, I craft sustainable bespoke garments on an all-metal vintage Singer. Every piece is cut by hand with architectural drafting precision, finished with reinforced french seams, and tailored to endure for years.
+          Bienvenue dans mon atelier. Entre deux révisions de mécanique des structures et de théories urbaines, je façonne des vêtements durables sur une Singer mécanique vintage tout en acier. Chaque pièce est coupée à la main selon des règles strictes de tracé architectural, montée en coutures anglaises et pensée pour traverser le temps.
         </p>
 
         <div class="about-facts-box">
-          <h4 data-i18n="about_fun_facts_title">Studio Principles</h4>
+          <h4 data-i18n="about_fun_facts_title">Principes d'Atelier</h4>
           <ul class="about-facts-list">
-            <li data-i18n="about_fact_1">Focus: Double-shot oat flat white and continuous ambient records</li>
-            <li data-i18n="about_fact_2">Machinery: 1984 all-metal mechanical needle-punch workhorse</li>
-            <li data-i18n="about_fact_3">Aesthetic: Sharp architectural lines balanced by fluid natural drape</li>
-            <li data-i18n="about_fact_4">Sustainability: Zero-waste scrap accessories and natural organic fibers</li>
+            <li data-i18n="about_fact_1">Focus : Double expresso avoine et vinyles ambient en continu</li>
+            <li data-i18n="about_fact_2">Machine : Mécanique Singer 1984 tout en acier</li>
+            <li data-i18n="about_fact_3">Esthétique : Lignes architecturales épurées et tombé fluide</li>
+            <li data-i18n="about_fact_4">Durabilité : Zéro déchet, chutes valorisées et fibres 100% naturelles</li>
           </ul>
         </div>
 
         <div class="modal-bottom-actions">
           <button class="btn btn-primary btn-large" onclick="document.getElementById('about-mariem-modal').style.display='none'">
-            <span data-i18n="about_close_btn">Return to Studio</span>
+            <span data-i18n="about_close_btn">Retourner à l'Atelier</span>
           </button>
         </div>
       </div>
@@ -145,16 +139,16 @@
         <div class="footer-left">
           <span class="footer-brand-title">Atelier Mariem</span>
           <span class="footer-sep">•</span>
-          <span>Bespoke Handcrafted Tailoring & Architectural Studio</span>
+          <span>Haute Confection Sur-Mesure & Studio d'Architecture</span>
         </div>
         <div class="footer-right">
-          <span class="footer-motto">Architectural precision & double french seams</span>
+          <span class="footer-motto">Précision architecturale & coutures anglaises</span>
         </div>
       </div>
     </footer>
   </div>
 
   <!-- Main JavaScript App Module -->
-  <script type="module" src="js/main.js?v=7"></script>
+  <script type="module" src="js/main.js?v=8"></script>
 </body>
 </html>

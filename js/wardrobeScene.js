@@ -4,10 +4,11 @@
 // ==========================================================================
 
 import { getStandaloneGarmentSvg } from "./garmentSvg.js";
-import { t, getLang } from "./i18n.js";
+import { t } from "./i18n.js";
 import { state } from "./state.js";
 import { playSound } from "./audio.js";
 import { icon } from "./icons.js";
+import { getGarmentFrenchName, getColorFrenchName, getPatternFrenchName, getStyleFrenchName } from "./clothingData.js";
 
 export class WardrobeController {
   constructor(container) {
@@ -25,14 +26,13 @@ export class WardrobeController {
   }
 
   render() {
-    const lang = getLang();
     const items = state.wardrobe;
     const filtered = this.currentCategory === "all"
       ? items
       : items.filter(i => i.category === this.currentCategory);
 
     this.container.innerHTML = `
-      <section class="scene scene-wardrobe" id="scene-wardrobe" aria-label="Atelier Wardrobe Inventory">
+      <section class="scene scene-wardrobe" id="scene-wardrobe" aria-label="Garde-Robe de l'Atelier">
         <!-- 3D Wardrobe Doors Fly-In Overlay (Modal) -->
         <div class="wardrobe-flyin-overlay" id="wardrobe-flyin-overlay" style="display: none;">
           <div class="wardrobe-3d-cabinet">
@@ -58,7 +58,7 @@ export class WardrobeController {
               <div class="flying-piece-container" id="flying-piece-container"></div>
             </div>
           </div>
-          <div class="flyin-caption" id="flyin-caption">Hanging your bespoke piece in the atelier wardrobe...</div>
+          <div class="flyin-caption" id="flyin-caption">${t("wardrobe_flyin_caption")}</div>
         </div>
 
         <!-- Wardrobe Header & Actions -->
@@ -115,7 +115,7 @@ export class WardrobeController {
             </div>
           ` : `
             <div class="wardrobe-items-grid">
-              ${filtered.map(piece => this.renderWardrobeCard(piece, lang)).join("")}
+              ${filtered.map(piece => this.renderWardrobeCard(piece)).join("")}
             </div>
           `}
         </div>
@@ -131,8 +131,8 @@ export class WardrobeController {
             <div class="confirm-icon">${icon("trash", 32, 32)}</div>
             <h3 class="confirm-title">${t("wardrobe_delete_confirm")}</h3>
             <div class="confirm-actions">
-              <button class="btn btn-ghost" id="btn-cancel-delete">Cancel</button>
-              <button class="btn btn-danger" id="btn-confirm-delete">Delete</button>
+              <button class="btn btn-ghost" id="btn-cancel-delete">${t("wardrobe_delete_cancel")}</button>
+              <button class="btn btn-danger" id="btn-confirm-delete">${t("wardrobe_delete_btn")}</button>
             </div>
           </div>
         </div>
@@ -142,8 +142,12 @@ export class WardrobeController {
     this.attachEvents();
   }
 
-  renderWardrobeCard(piece, lang) {
-    const colorName = lang === "fr" ? (piece.colorNameFr || piece.colorNameEn) : piece.colorNameEn;
+  renderWardrobeCard(piece) {
+    const frenchPieceName = getGarmentFrenchName(piece.pieceId);
+    const frenchColorName = getColorFrenchName(piece.colorId, piece.colorHex);
+    const frenchStyleName = getStyleFrenchName(piece.pieceId, piece.styleId);
+    const frenchPatternName = getPatternFrenchName(piece.patternId);
+    const genderLabel = piece.gender === "femme" ? "Femme" : (piece.gender === "homme" ? "Homme" : "Unisexe");
 
     return `
       <div class="wardrobe-item-card" data-piece-id="${piece.id}">
@@ -155,8 +159,8 @@ export class WardrobeController {
         <!-- Card Meta Info -->
         <div class="item-card-info">
           <div class="item-card-title-row">
-            <h4 class="item-card-name">${piece.pieceId.toUpperCase()}</h4>
-            <span class="item-gender-badge">${piece.gender}</span>
+            <h4 class="item-card-name">${frenchPieceName.toUpperCase()}</h4>
+            <span class="item-gender-badge">${genderLabel}</span>
           </div>
 
           <div class="item-card-details-list">
@@ -164,16 +168,16 @@ export class WardrobeController {
               <span class="meta-label">${t("wardrobe_card_color")}</span>
               <span class="meta-val">
                 <span class="meta-dot" style="background-color: ${piece.colorHex};"></span>
-                ${colorName}
+                ${frenchColorName}
               </span>
             </div>
             <div class="meta-row">
               <span class="meta-label">${t("wardrobe_card_style")}</span>
-              <span class="meta-val">${piece.styleId}</span>
+              <span class="meta-val">${frenchStyleName}</span>
             </div>
             <div class="meta-row">
               <span class="meta-label">${t("wardrobe_card_pattern")}</span>
-              <span class="meta-val">${piece.patternId || "plain"}</span>
+              <span class="meta-val">${frenchPatternName}</span>
             </div>
             ${piece.embroideryText ? `
               <div class="meta-row tag-row">
@@ -300,9 +304,13 @@ export class WardrobeController {
     const modalContent = this.container.querySelector("#passport-modal-content");
     if (!modalBackdrop || !modalContent) return;
 
-    const lang = getLang();
-    const colorName = lang === "fr" ? (piece.colorNameFr || piece.colorNameEn) : piece.colorNameEn;
-    const craftDate = piece.craftedAt ? new Date(piece.craftedAt).toLocaleDateString(lang === "fr" ? "fr-FR" : "en-US", { year: "numeric", month: "long", day: "numeric" }) : "November 2026";
+    const frenchPieceName = getGarmentFrenchName(piece.pieceId);
+    const frenchColorName = getColorFrenchName(piece.colorId, piece.colorHex);
+    const frenchStyleName = getStyleFrenchName(piece.pieceId, piece.styleId);
+    const frenchPatternName = getPatternFrenchName(piece.patternId);
+    const craftDate = piece.craftedAt
+      ? new Date(piece.craftedAt).toLocaleDateString("fr-FR", { year: "numeric", month: "long", day: "numeric" })
+      : "Novembre 2026";
 
     modalContent.innerHTML = `
       <div class="passport-seal">
@@ -311,32 +319,32 @@ export class WardrobeController {
       <h3 class="passport-head" data-i18n="passport_title">${t("passport_title")}</h3>
       <div class="passport-inner-card">
         <div class="passport-row">
-          <span class="p-label">Piece ID:</span>
+          <span class="p-label">${t("passport_piece_id")}</span>
           <span class="p-val font-mono">${piece.id}</span>
         </div>
         <div class="passport-row">
-          <span class="p-label">Garment Type:</span>
-          <span class="p-val">${piece.pieceId.toUpperCase()} (${piece.styleId})</span>
+          <span class="p-label">${t("passport_garment_type")}</span>
+          <span class="p-val">${frenchPieceName.toUpperCase()} (${frenchStyleName})</span>
         </div>
         <div class="passport-row">
           <span class="p-label">${t("passport_crafted_on")}</span>
           <span class="p-val">${craftDate}</span>
         </div>
         <div class="passport-row">
-          <span class="p-label">Textile & Dye:</span>
-          <span class="p-val">${colorName} • Pattern: ${piece.patternId || "plain"}</span>
+          <span class="p-label">${t("passport_color_weave")}</span>
+          <span class="p-val">${frenchColorName} • Tissage&nbsp;: ${frenchPatternName}</span>
         </div>
         <div class="passport-row">
-          <span class="p-label">Composition:</span>
+          <span class="p-label">${t("passport_composition")}</span>
           <span class="p-val">${t("passport_fabric_composition")}</span>
         </div>
         <div class="passport-row">
-          <span class="p-label">Care Instructions:</span>
+          <span class="p-label">${t("passport_care_title")}</span>
           <span class="p-val">${t("passport_care_notes")}</span>
         </div>
         ${piece.embroideryText ? `
           <div class="passport-row">
-            <span class="p-label">Bespoke Tag:</span>
+            <span class="p-label">${t("passport_embroidery")}</span>
             <span class="p-val highlight">“${piece.embroideryText}”</span>
           </div>
         ` : ""}

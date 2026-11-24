@@ -31,8 +31,8 @@ class DialogueEngine {
    * Select a random line from the given category pool, ensuring no immediate repeat
    */
   getRandomLine(category) {
-    const lang = getLang();
-    const pool = DIALOGUE_POOLS[category] ? DIALOGUE_POOLS[category][lang] || DIALOGUE_POOLS[category].en : [];
+    const raw = DIALOGUE_POOLS[category];
+    const pool = Array.isArray(raw) ? raw : (raw?.fr || raw?.en || []);
     if (!pool || pool.length === 0) return "";
 
     let available = pool.filter(line => line !== this.history[category]);

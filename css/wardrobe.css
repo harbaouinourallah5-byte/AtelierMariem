@@ -406,6 +406,8 @@
   border-radius: var(--radius-lg);
   max-width: 500px;
   width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 2.2rem;
   box-shadow: var(--shadow-lg);
   display: flex;
@@ -550,5 +552,9 @@
 
   .wardrobe-top-actions .btn {
     flex: 1;
+  }
+
+  .passport-modal-card {
+    padding: 1.5rem 1rem;
   }
 }

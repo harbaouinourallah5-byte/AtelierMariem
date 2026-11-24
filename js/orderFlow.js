@@ -35,7 +35,7 @@ export class OrderFlowController {
 
   render() {
     this.container.innerHTML = `
-      <section class="scene scene-order" id="scene-order" aria-label="Custom Order Conversation">
+      <section class="scene scene-order" id="scene-order" aria-label="Échange de Confection Sur-Mesure">
         <!-- Progress Stepper Header (Clean, Aligned, Poppins) -->
         <div class="order-stepper-header">
           <div class="stepper-progress-bar">
@@ -57,7 +57,7 @@ export class OrderFlowController {
             <div class="mariem-talking-avatar-card">
               <div class="avatar-header">
                 <span class="status-dot"></span>
-                <span class="avatar-title">Mariem • Tailoring Desk</span>
+                <span class="avatar-title">Mariem • Établi de Coupe</span>
               </div>
               <div class="avatar-svg-box" id="order-avatar-box">
                 ${getMariemAvatarImg("talking", { width: "100%", height: "100%", className: "chat-avatar-main" })}
@@ -138,8 +138,7 @@ export class OrderFlowController {
       this.setMariemPose("thinking");
       // Step 4: Choose Style
       const pieceData = GARMENT_PIECES.find(p => p.id === state.currentOrder.pieceId) || GARMENT_PIECES[0];
-      const lang = getLang();
-      const question = lang === "fr" ? pieceData.styleQuestionFr : pieceData.styleQuestionEn;
+      const question = pieceData.styleQuestionFr || pieceData.styleQuestion;
       await dialogueEngine.displayMariemMessage(dialogueTarget, question);
       this.renderStep4Choices(choicesTarget, pieceData);
 
@@ -190,12 +189,12 @@ export class OrderFlowController {
           <button class="choice-card-btn" data-gender="femme">
             <span class="choice-icon">${icon("dress")}</span>
             <span class="choice-title">${t("gender_femme")}</span>
-            <span class="choice-sub">Curved silhouettes, tailored skirts & dresses</span>
+            <span class="choice-sub">${t("gender_femme_sub")}</span>
           </button>
           <button class="choice-card-btn" data-gender="homme">
             <span class="choice-icon">${icon("suit")}</span>
             <span class="choice-title">${t("gender_homme")}</span>
-            <span class="choice-sub">Structured shoulders, trousers & outerwear</span>
+            <span class="choice-sub">${t("gender_homme_sub")}</span>
           </button>
         </div>
       </div>
@@ -217,7 +216,6 @@ export class OrderFlowController {
 
   // ================= STEP 2: COLOR FIRST =================
   renderStep2Choices(container) {
-    const lang = getLang();
     const currentColorHex = state.currentOrder.colorHex;
 
     container.innerHTML = `
@@ -237,7 +235,7 @@ export class OrderFlowController {
             <div class="swatch-grain-overlay"></div>
             <div class="swatch-shine-reflection"></div>
             <div class="swatch-info-tag">
-              <span class="swatch-color-name" id="live-swatch-name">${lang === 'fr' ? state.currentOrder.colorNameFr : state.currentOrder.colorNameEn}</span>
+              <span class="swatch-color-name" id="live-swatch-name">${state.currentOrder.colorNameFr || state.currentOrder.colorName}</span>
               <span class="swatch-color-hex" id="live-swatch-hex">${currentColorHex}</span>
             </div>
           </div>
@@ -251,12 +249,11 @@ export class OrderFlowController {
               <button class="color-swatch-btn ${color.hex === currentColorHex ? 'selected' : ''}"
                 data-hex="${color.hex}"
                 data-id="${color.id}"
-                data-name-en="${color.nameEn}"
-                data-name-fr="${color.nameFr}"
+                data-name="${color.nameFr || color.name}"
                 data-tone="${color.tone}"
-                title="${lang === 'fr' ? color.nameFr : color.nameEn}">
+                title="${color.nameFr || color.name}">
                 <span class="swatch-circle" style="background-color: ${color.hex};"></span>
-                <span class="swatch-label">${lang === 'fr' ? color.nameFr : color.nameEn}</span>
+                <span class="swatch-label">${color.nameFr || color.name}</span>
               </button>
             `).join("")}
           </div>
@@ -266,8 +263,8 @@ export class OrderFlowController {
         <div class="custom-color-row">
           <label class="custom-color-label" for="custom-hex-picker">${t("custom_color_label")}</label>
           <div class="custom-picker-group">
-            <input type="color" id="custom-hex-picker" value="${currentColorHex}" class="color-wheel-input" aria-label="Custom Color Picker" />
-            <input type="text" id="custom-hex-text" value="${currentColorHex}" maxlength="7" class="hex-text-input" aria-label="Color HEX code" />
+            <input type="color" id="custom-hex-picker" value="${currentColorHex}" class="color-wheel-input" aria-label="Sélecteur de nuance sur-mesure" />
+            <input type="text" id="custom-hex-text" value="${currentColorHex}" maxlength="7" class="hex-text-input" aria-label="Code couleur hexadécimal" />
           </div>
         </div>
 
@@ -293,10 +290,10 @@ export class OrderFlowController {
       });
     });
 
-    const updateColorSelection = (hex, nameEn, nameFr, tone = "custom", id = "custom") => {
+    const updateColorSelection = (hex, name, tone = "custom", id = "custom") => {
       state.currentOrder.colorHex = hex;
-      state.currentOrder.colorNameEn = nameEn;
-      state.currentOrder.colorNameFr = nameFr;
+      state.currentOrder.colorName = name;
+      state.currentOrder.colorNameFr = name;
       state.currentOrder.colorTone = tone;
       state.currentOrder.colorId = id;
 
@@ -307,7 +304,7 @@ export class OrderFlowController {
       const hexText = container.querySelector("#custom-hex-text");
 
       if (swatchBox) swatchBox.style.backgroundColor = hex;
-      if (nameLabel) nameLabel.textContent = lang === "fr" ? nameFr : nameEn;
+      if (nameLabel) nameLabel.textContent = name;
       if (hexLabel) hexLabel.textContent = hex;
       if (hexPicker) hexPicker.value = hex;
       if (hexText) hexText.value = hex;
@@ -323,10 +320,9 @@ export class OrderFlowController {
 
         const hex = btn.getAttribute("data-hex");
         const id = btn.getAttribute("data-id");
-        const nameEn = btn.getAttribute("data-name-en");
-        const nameFr = btn.getAttribute("data-name-fr");
+        const name = btn.getAttribute("data-name");
         const tone = btn.getAttribute("data-tone");
-        updateColorSelection(hex, nameEn, nameFr, tone, id);
+        updateColorSelection(hex, name, tone, id);
       });
     });
 
@@ -338,7 +334,7 @@ export class OrderFlowController {
       hexPicker.addEventListener("input", (e) => {
         const hex = e.target.value.toUpperCase();
         container.querySelectorAll(".color-swatch-btn").forEach(b => b.classList.remove("selected"));
-        updateColorSelection(hex, `Custom Dye (${hex})`, `Nuance Sur-Mesure (${hex})`);
+        updateColorSelection(hex, `Nuance Sur-Mesure (${hex})`);
       });
     }
 
@@ -348,7 +344,7 @@ export class OrderFlowController {
         if (!hex.startsWith("#")) hex = "#" + hex;
         if (/^#[0-9A-F]{6}$/i.test(hex)) {
           container.querySelectorAll(".color-swatch-btn").forEach(b => b.classList.remove("selected"));
-          updateColorSelection(hex.toUpperCase(), `Custom Dye (${hex})`, `Nuance Sur-Mesure (${hex})`);
+          updateColorSelection(hex.toUpperCase(), `Nuance Sur-Mesure (${hex})`);
         }
       });
     }
@@ -368,7 +364,6 @@ export class OrderFlowController {
 
   // ================= STEP 3: CHOOSE THE PIECE =================
   renderStep3Choices(container) {
-    const lang = getLang();
     const gender = state.currentOrder.gender || "femme";
 
     // Filter pieces by gender
@@ -376,7 +371,7 @@ export class OrderFlowController {
 
     // Group by category
     const categories = [
-      { id: "all", label: lang === "fr" ? "Toutes" : "All Pieces" },
+      { id: "all", label: "Toutes les Pièces" },
       { id: "tops", label: t("category_tops") },
       { id: "bottoms", label: t("category_bottoms") },
       { id: "outerwear", label: t("category_outerwear") },
@@ -395,7 +390,7 @@ export class OrderFlowController {
 
         <!-- Pieces Grid (Clean Vector Line Icons, Uniform Height) -->
         <div class="pieces-selection-grid" id="pieces-grid">
-          ${this.renderPiecesGridItems(availablePieces, lang)}
+          ${this.renderPiecesGridItems(availablePieces)}
         </div>
       </div>
     `;
@@ -409,7 +404,7 @@ export class OrderFlowController {
         const cat = pill.getAttribute("data-cat");
         const filtered = cat === "all" ? availablePieces : availablePieces.filter(p => p.category === cat);
         const grid = container.querySelector("#pieces-grid");
-        grid.innerHTML = this.renderPiecesGridItems(filtered, lang);
+        grid.innerHTML = this.renderPiecesGridItems(filtered);
         this.attachPieceClickEvents(grid);
       });
     });
@@ -417,12 +412,12 @@ export class OrderFlowController {
     this.attachPieceClickEvents(container.querySelector("#pieces-grid"));
   }
 
-  renderPiecesGridItems(pieces, lang) {
+  renderPiecesGridItems(pieces) {
     return pieces.map(piece => `
       <button class="piece-card-btn" data-piece-id="${piece.id}" data-category="${piece.category}" data-slot="${piece.slot}">
         <span class="piece-icon">${icon(piece.iconName || 'shirt')}</span>
-        <span class="piece-name">${lang === 'fr' ? piece.nameFr : piece.nameEn}</span>
-        <span class="piece-tag">${piece.category}</span>
+        <span class="piece-name">${piece.nameFr || piece.name}</span>
+        <span class="piece-tag">${t("category_" + piece.category) || piece.category}</span>
       </button>
     `).join("");
   }
@@ -449,8 +444,6 @@ export class OrderFlowController {
 
   // ================= STEP 4: CHOOSE STYLE =================
   renderStep4Choices(container, pieceData) {
-    const lang = getLang();
-
     container.innerHTML = `
       <div class="step-card step-style-card">
         <div class="style-options-grid">
@@ -458,8 +451,8 @@ export class OrderFlowController {
             <button class="style-choice-btn ${idx === 0 ? 'selected' : ''}" data-style-id="${style.id}">
               <div class="style-btn-inner">
                 <span class="style-number">0${idx + 1}</span>
-                <span class="style-title">${lang === 'fr' ? style.nameFr : style.nameEn}</span>
-                <span class="style-desc">${lang === 'fr' ? style.descFr : style.descEn}</span>
+                <span class="style-title">${style.nameFr || style.name}</span>
+                <span class="style-desc">${style.descFr || style.desc}</span>
               </div>
             </button>
           `).join("")}
@@ -483,7 +476,6 @@ export class OrderFlowController {
 
   // ================= STEP 5: PATTERN & EMBROIDERY =================
   renderStep5Choices(container) {
-    const lang = getLang();
     const currentPattern = state.currentOrder.patternId || "plain";
     const currentEmbroidery = state.currentOrder.embroideryText || "";
     const currentThreadHex = state.currentOrder.threadColorHex || "#FFFDF6";
@@ -497,7 +489,7 @@ export class OrderFlowController {
             ${PATTERNS.map(pat => `
               <button class="pattern-pill-btn ${pat.id === currentPattern ? 'selected' : ''}" data-pat-id="${pat.id}">
                 <span class="pattern-preview pat-${pat.id}"></span>
-                <span class="pattern-name">${lang === 'fr' ? pat.nameFr : pat.nameEn}</span>
+                <span class="pattern-name">${pat.nameFr || pat.name}</span>
               </button>
             `).join("")}
           </div>
@@ -525,9 +517,9 @@ export class OrderFlowController {
             ${THREAD_COLORS.map(th => `
               <button class="thread-swatch-btn ${th.hex === currentThreadHex ? 'selected' : ''}"
                 data-hex="${th.hex}"
-                title="${lang === 'fr' ? th.nameFr : th.nameEn}">
+                title="${th.nameFr || th.name}">
                 <span class="thread-dot" style="background-color: ${th.hex};"></span>
-                <span class="thread-name">${lang === 'fr' ? th.nameFr : th.nameEn}</span>
+                <span class="thread-name">${th.nameFr || th.name}</span>
               </button>
             `).join("")}
           </div>

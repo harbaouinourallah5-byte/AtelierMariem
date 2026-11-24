@@ -4,11 +4,11 @@
 // ==========================================================================
 
 import { getFittingMannequinBaseSvg, getLayeredGarmentSvg, getStandaloneGarmentSvg } from "./garmentSvg.js";
-import { t, getLang } from "./i18n.js";
+import { t } from "./i18n.js";
 import { state } from "./state.js";
 import { playSound } from "./audio.js";
 import { icon } from "./icons.js";
-import { SLOT_TABLE } from "./clothingData.js";
+import { SLOT_TABLE, getGarmentFrenchName, getStyleFrenchName } from "./clothingData.js";
 
 export class FittingRoomController {
   constructor(container) {
@@ -21,7 +21,6 @@ export class FittingRoomController {
   }
 
   render() {
-    const lang = getLang();
     const outfit = state.fittingRoom;
     const wardrobeItems = state.wardrobe;
 
@@ -38,7 +37,7 @@ export class FittingRoomController {
         });
 
     this.container.innerHTML = `
-      <section class="scene scene-fitting" id="scene-fitting" aria-label="Atelier Fitting Room">
+      <section class="scene scene-fitting" id="scene-fitting" aria-label="Cabine d'Essayage Virtuelle">
         <!-- Fitting Room Header -->
         <div class="fitting-header">
           <div class="fitting-titles">
@@ -82,11 +81,11 @@ export class FittingRoomController {
 
               <div class="skin-tone-group">
                 <span class="tone-label">${t("model_skin_tone")}</span>
-                <button class="tone-dot ${outfit.skinTone === 'fair' ? 'active' : ''}" data-tone="fair" style="background-color: #FDF0E8;" title="Fair"></button>
-                <button class="tone-dot ${outfit.skinTone === 'warm' ? 'active' : ''}" data-tone="warm" style="background-color: #F5DDD1;" title="Warm"></button>
-                <button class="tone-dot ${outfit.skinTone === 'sand' ? 'active' : ''}" data-tone="sand" style="background-color: #E4BA97;" title="Sand"></button>
-                <button class="tone-dot ${outfit.skinTone === 'caramel' ? 'active' : ''}" data-tone="caramel" style="background-color: #C68E65;" title="Caramel"></button>
-                <button class="tone-dot ${outfit.skinTone === 'deep' ? 'active' : ''}" data-tone="deep" style="background-color: #6F4532;" title="Deep"></button>
+                <button class="tone-dot ${outfit.skinTone === 'fair' ? 'active' : ''}" data-tone="fair" style="background-color: #FDF0E8;" title="${t('skin_fair')}"></button>
+                <button class="tone-dot ${outfit.skinTone === 'warm' ? 'active' : ''}" data-tone="warm" style="background-color: #F5DDD1;" title="${t('skin_warm')}"></button>
+                <button class="tone-dot ${outfit.skinTone === 'sand' ? 'active' : ''}" data-tone="sand" style="background-color: #E4BA97;" title="${t('skin_sand')}"></button>
+                <button class="tone-dot ${outfit.skinTone === 'caramel' ? 'active' : ''}" data-tone="caramel" style="background-color: #C68E65;" title="${t('skin_caramel')}"></button>
+                <button class="tone-dot ${outfit.skinTone === 'deep' ? 'active' : ''}" data-tone="deep" style="background-color: #6F4532;" title="${t('skin_deep')}"></button>
               </div>
             </div>
 
@@ -130,16 +129,16 @@ export class FittingRoomController {
             <!-- Active Slots Badges Row with dedicated remove buttons -->
             <div class="equipped-slots-summary">
               ${this.renderEquippedSlotPill("head", outfit.slots.head, t("slot_head"))}
-              ${this.renderEquippedSlotPill("neck", outfit.slots.neck, lang === 'fr' ? 'Écharpe' : 'Scarf')}
+              ${this.renderEquippedSlotPill("neck", outfit.slots.neck, "Écharpe")}
               ${outfit.slots.onepiece
-                ? this.renderEquippedSlotPill("onepiece", outfit.slots.onepiece, lang === 'fr' ? 'Robe / Costume' : 'Dress / Suit')
+                ? this.renderEquippedSlotPill("onepiece", outfit.slots.onepiece, "Robe / Costume")
                 : `
                   ${this.renderEquippedSlotPill("top", outfit.slots.top, t("slot_top"))}
                   ${this.renderEquippedSlotPill("bottom", outfit.slots.bottom, t("slot_bottom"))}
                 `
               }
               ${this.renderEquippedSlotPill("outerwear", outfit.slots.outerwear, t("slot_outerwear"))}
-              ${this.renderEquippedSlotPill("feet", outfit.slots.feet, lang === 'fr' ? 'Chaussettes' : 'Socks')}
+              ${this.renderEquippedSlotPill("feet", outfit.slots.feet, "Chaussettes")}
             </div>
           </div>
 
@@ -159,33 +158,35 @@ export class FittingRoomController {
 
               <!-- Drawer Filter Pills -->
               <div class="drawer-filters-row">
-                <button class="drawer-filter ${this.activeDrawerFilter === 'all' ? 'active' : ''}" data-cat="all">All</button>
-                <button class="drawer-filter ${this.activeDrawerFilter === 'tops' ? 'active' : ''}" data-cat="tops">Tops</button>
-                <button class="drawer-filter ${this.activeDrawerFilter === 'bottoms' ? 'active' : ''}" data-cat="bottoms">Bottoms</button>
-                <button class="drawer-filter ${this.activeDrawerFilter === 'outerwear' ? 'active' : ''}" data-cat="outerwear">Outerwear</button>
-                <button class="drawer-filter ${this.activeDrawerFilter === 'onepiece' ? 'active' : ''}" data-cat="onepiece">One-Piece</button>
-                <button class="drawer-filter ${this.activeDrawerFilter === 'accessories' ? 'active' : ''}" data-cat="accessories">Accessories</button>
+                <button class="drawer-filter ${this.activeDrawerFilter === 'all' ? 'active' : ''}" data-cat="all">Tout</button>
+                <button class="drawer-filter ${this.activeDrawerFilter === 'tops' ? 'active' : ''}" data-cat="tops">Hauts</button>
+                <button class="drawer-filter ${this.activeDrawerFilter === 'bottoms' ? 'active' : ''}" data-cat="bottoms">Bas</button>
+                <button class="drawer-filter ${this.activeDrawerFilter === 'outerwear' ? 'active' : ''}" data-cat="outerwear">Manteaux</button>
+                <button class="drawer-filter ${this.activeDrawerFilter === 'onepiece' ? 'active' : ''}" data-cat="onepiece">Pièces Uniques</button>
+                <button class="drawer-filter ${this.activeDrawerFilter === 'accessories' ? 'active' : ''}" data-cat="accessories">Accessoires</button>
               </div>
 
               <!-- Available Pieces Grid in Rack -->
               <div class="rack-items-scroll">
                 ${filteredWardrobe.length === 0 ? `
                   <div class="rack-empty-message">
-                    <p>No pieces in this category yet!</p>
+                    <p>${t("fitting_empty_category")}</p>
                   </div>
                 ` : `
                   <div class="rack-items-grid">
                     ${filteredWardrobe.map(piece => {
                       const isEquipped = this.isPieceEquipped(piece, outfit);
+                      const pieceName = getGarmentFrenchName(piece.pieceId);
+                      const styleName = getStyleFrenchName(piece.pieceId, piece.styleId);
                       return `
                         <div class="rack-item-card ${isEquipped ? 'is-worn' : ''}" data-piece-id="${piece.id}">
                           <div class="rack-item-preview">
                             ${getStandaloneGarmentSvg(piece, { width: 90, height: 105, showHanger: true })}
                           </div>
                           <div class="rack-item-caption">
-                            <span class="rack-item-name">${piece.pieceId.toUpperCase()}</span>
-                            <span class="rack-item-style">${piece.styleId}</span>
-                            <span class="rack-item-status">${isEquipped ? 'Equipped' : '+ Wear'}</span>
+                            <span class="rack-item-name">${pieceName.toUpperCase()}</span>
+                            <span class="rack-item-style">${styleName}</span>
+                            <span class="rack-item-status">${isEquipped ? t('fitting_status_worn') : t('fitting_status_wear')}</span>
                           </div>
                         </div>
                       `;
@@ -210,17 +211,18 @@ export class FittingRoomController {
     if (!piece) {
       return `
         <div class="slot-pill empty" data-slot="${slotKey}">
-          <span class="slot-label">${label}:</span>
+          <span class="slot-label">${label}\u00A0:</span>
           <span class="slot-empty-text">${t("fitting_empty_slot")}</span>
         </div>
       `;
     }
+    const pieceName = getGarmentFrenchName(piece.pieceId);
     return `
       <div class="slot-pill occupied" data-slot="${slotKey}">
         <span class="slot-color-dot" style="background-color: ${piece.colorHex};"></span>
-        <span class="slot-label">${label}:</span>
-        <span class="slot-piece-name">${piece.pieceId.toUpperCase()}</span>
-        <button class="btn-unequip-slot" data-slot="${slotKey}" title="Unequip">×</button>
+        <span class="slot-label">${label}\u00A0:</span>
+        <span class="slot-piece-name">${pieceName.toUpperCase()}</span>
+        <button class="btn-unequip-slot" data-slot="${slotKey}" title="${t('slot_unequip')}">×</button>
       </div>
     `;
   }
@@ -414,11 +416,11 @@ export class FittingRoomController {
 
       ctx.fillStyle = "#B85028";
       ctx.font = "500 13px 'Poppins', sans-serif";
-      ctx.fillText("Bespoke Couture Archive • " + new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase(), 320, 825);
+      ctx.fillText("Archive Haute Confection • " + new Date().toLocaleDateString("fr-FR", { year: 'numeric', month: 'short', day: 'numeric' }).toUpperCase(), 320, 825);
 
       ctx.fillStyle = "#5E5652";
       ctx.font = "400 12px 'Poppins', sans-serif";
-      ctx.fillText("Architectural tailoring with reinforced french seams", 320, 856);
+      ctx.fillText("Précision architecturale & coutures anglaises", 320, 856);
 
       // Download file
       const pngURL = canvas.toDataURL("image/png");

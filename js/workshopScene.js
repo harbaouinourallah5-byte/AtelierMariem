@@ -9,9 +9,10 @@ import { getMariemAvatarImg } from "./characterSvg.js";
 import { getStandaloneGarmentSvg, getSvgPatternDefs } from "./garmentSvg.js";
 import { dialogueEngine } from "./dialogueEngine.js";
 import { icon } from "./icons.js";
-import { t, getLang } from "./i18n.js";
+import { t } from "./i18n.js";
 import { state } from "./state.js";
 import { playSound, startSewingSound, stopSewingSound } from "./audio.js";
+import { getGarmentFrenchName, getStyleFrenchName } from "./clothingData.js";
 
 export class WorkshopController {
   constructor(container) {
@@ -31,13 +32,12 @@ export class WorkshopController {
   }
 
   render() {
-    const lang = getLang();
     const order = state.currentOrder;
     const hex = order.colorHex || "#B85028";
     const pat = order.patternId || "plain";
 
     this.container.innerHTML = `
-      <section class="scene scene-workshop" id="scene-workshop" aria-label="Mariem's Sewing Workshop">
+      <section class="scene scene-workshop" id="scene-workshop" aria-label="Atelier de Confection de Mariem">
         <!-- Canvas for Confetti Fireworks -->
         <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
 
@@ -71,9 +71,9 @@ export class WorkshopController {
                 <div class="textbook-cover">
                   <div class="book-mini-header">
                     <span class="book-mini-icon">${icon("bookOpen")}</span>
-                    <span class="book-mini-title">ARCHITECTURE REVIEW</span>
+                    <span class="book-mini-title">${t("workshop_textbook_title")}</span>
                   </div>
-                  <p class="book-mini-body">Chapter 4: Vaulted spans & tensile cloth structures...</p>
+                  <p class="book-mini-body">${t("workshop_textbook_body")}</p>
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@ export class WorkshopController {
               <div class="workshop-bench-stage">
                 <!-- Mariem Seated at Left of Sewing Machine Bench -->
                 <div class="mariem-sewing-holder" id="mariem-sewing-holder">
-                  ${getMariemAvatarImg("thinking", { className: "workshop-sewing-mariem", alt: "Mariem sewing at the atelier bench" })}
+                  ${getMariemAvatarImg("thinking", { className: "workshop-sewing-mariem", alt: "Mariem à l'établi guidant le tissu" })}
                 </div>
 
                 <!-- Animated Mechanical Sewing Machine Stage on the Right -->
@@ -151,9 +151,9 @@ export class WorkshopController {
                     ${getStandaloneGarmentSvg(order, { width: 180, height: 210, showHanger: true })}
                   </div>
                   <div class="garment-card-meta">
-                    <span class="meta-name">${order.pieceId.toUpperCase()}</span>
-                    <span class="meta-detail">Tone: ${lang === 'fr' ? order.colorNameFr : order.colorNameEn}</span>
-                    <span class="meta-detail">Cut: ${order.styleId}</span>
+                    <span class="meta-name">${getGarmentFrenchName(order.pieceId).toUpperCase()}</span>
+                    <span class="meta-detail">Teinte&nbsp;: ${order.colorNameFr || order.colorName || "Teinte d'Atelier"}</span>
+                    <span class="meta-detail">Coupe&nbsp;: ${getStyleFrenchName(order.pieceId, order.styleId)}</span>
                     ${order.embroideryText ? `
                       <span class="meta-tag">
                         <span class="meta-tag-icon">${icon("tag")}</span>

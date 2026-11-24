@@ -1,151 +1,151 @@
 // ==========================================================================
-// Atelier Mariem - Clothing Data Specifications
-// Colors, Garment Types, Styles, Patterns, and Starter Pieces
+// Atelier Mariem - Spécifications des Vêtements (100% Français)
+// Nuances, Modèles, Coupes, Tissages et Pièces d'Archive
 // ==========================================================================
 
 export const COLOR_PALETTE = [
   {
     id: "terracotta",
     hex: "#C2542B",
-    nameEn: "Terracotta Earth",
+    name: "Terre Cuite d'Atelier",
     nameFr: "Terre Cuite d'Atelier",
     tone: "warm",
-    descriptionEn: "Sunbaked Mediterranean clay, rich and grounding",
+    description: "Terre cuite toscane, chaleureuse et texturée",
     descriptionFr: "Terre cuite toscane, chaleureuse et texturée"
   },
   {
     id: "dusty_rose",
     hex: "#D98880",
-    nameEn: "Dusty Atelier Rose",
+    name: "Vieux Rose Poudré",
     nameFr: "Vieux Rose Poudré",
     tone: "pastel",
-    descriptionEn: "Soft vintage rose petal with gentle warmth",
+    description: "Pétale de rose séchée, romantique et subtil",
     descriptionFr: "Pétale de rose séchée, romantique et subtil"
   },
   {
     id: "sage_garden",
     hex: "#879B82",
-    nameEn: "Sage Botany",
+    name: "Sauge Botanique",
     nameFr: "Sauge Botanique",
     tone: "earth",
-    descriptionEn: "Calming herbal green reminiscent of studio plants",
+    description: "Feuille de sauge veloutée, fraîche et apaisante",
     descriptionFr: "Feuille de sauge veloutée, fraîche et apaisante"
   },
   {
     id: "olive_grove",
     hex: "#5A6838",
-    nameEn: "Olive Grove",
+    name: "Vert Olive Profond",
     nameFr: "Vert Olive Profond",
     tone: "earth",
-    descriptionEn: "Deep Mediterranean olive leaf, utilitarian and timeless",
+    description: "Olive mature des garrigues, noble et rustique",
     descriptionFr: "Olive mature des garrigues, noble et rustique"
   },
   {
     id: "forest_pine",
     hex: "#244A34",
-    nameEn: "Midnight Forest",
+    name: "Vert Forêt Nocturne",
     nameFr: "Vert Forêt Nocturne",
     tone: "deep",
-    descriptionEn: "Lush evergreen pine needle in evening shadow",
+    description: "Aiguille de pin sous la pluie, sombre et élégant",
     descriptionFr: "Aiguille de pin sous la pluie, sombre et élégant"
   },
   {
     id: "deep_navy",
     hex: "#1E2A44",
-    nameEn: "Tailor Navy",
+    name: "Bleu Marine Tailleur",
     nameFr: "Bleu Marine Tailleur",
     tone: "deep",
-    descriptionEn: "Architectural blueprint midnight navy wool",
+    description: "Bleu de marine classique, structuré et net",
     descriptionFr: "Bleu de marine classique, structuré et net"
   },
   {
     id: "sky_linen",
     hex: "#85AEC8",
-    nameEn: "Morning Sky",
+    name: "Bleu Ciel Brumeux",
     nameFr: "Bleu Ciel Brumeux",
     tone: "cool",
-    descriptionEn: "Soft dawn light reflecting off the studio window",
+    description: "Lumière d'aube sur les toits, vaporeuse et claire",
     descriptionFr: "Lumière d'aube sur les toits, vaporeuse et claire"
   },
   {
     id: "lavender_mist",
     hex: "#9F92BE",
-    nameEn: "Lavender Mist",
+    name: "Brume de Lavande",
     nameFr: "Brume de Lavande",
     tone: "pastel",
-    descriptionEn: "Wild Provençal lavender steeped in afternoon tea",
+    description: "Lavande sauvage séchée, douce et poétique",
     descriptionFr: "Lavande sauvage séchée, douce et poétique"
   },
   {
     id: "plum_velvet",
     hex: "#5D2641",
-    nameEn: "Plum Cassis",
+    name: "Cassis & Prune Velours",
     nameFr: "Cassis & Prune Velours",
     tone: "deep",
-    descriptionEn: "Decadent dark fruit velvet with royal undertones",
+    description: "Prune confite et velours impérial, intense",
     descriptionFr: "Prune confite et velours impérial, intense"
   },
   {
     id: "buttercream",
     hex: "#F5E9BE",
-    nameEn: "Buttercream Raw Silk",
+    name: "Crème Vanillée Soyeuse",
     nameFr: "Crème Vanillée Soyeuse",
     tone: "warm",
-    descriptionEn: "Unbleached raw silk and warm warm pastry cream",
+    description: "Soie grège et douceur vanillée lumineuse",
     descriptionFr: "Soie grège et douceur vanillée lumineuse"
   },
   {
     id: "mustard_ochre",
     hex: "#CCA02A",
-    nameEn: "Golden Ochre",
+    name: "Ocre Solaire & Moutarde",
     nameFr: "Ocre Solaire & Moutarde",
     tone: "warm",
-    descriptionEn: "Vintage corduroy mustard, bold and vibrant",
+    description: "Velours côtelé seventies, lumineux et audacieux",
     descriptionFr: "Velours côtelé seventies, lumineux et audacieux"
   },
   {
     id: "caramel_cognac",
     hex: "#9B5A2B",
-    nameEn: "Caramel Cognac",
+    name: "Caramel Cognac Brûlé",
     nameFr: "Caramel Cognac Brûlé",
     tone: "warm",
-    descriptionEn: "Worn leather sketchbook and salted butter caramel",
+    description: "Cuir patiné de carnet d'esquisse et caramel au beurre",
     descriptionFr: "Cuir patiné de carnet d'esquisse et caramel au beurre"
   },
   {
     id: "charcoal_slate",
     hex: "#3B3D43",
-    nameEn: "Charcoal Slate",
+    name: "Ardoise Anthracite",
     nameFr: "Ardoise Anthracite",
     tone: "deep",
-    descriptionEn: "Graphite sketching pencil lead and slate stone",
+    description: "Mine de crayon 4B et pierre d'ardoise d'atelier",
     descriptionFr: "Mine de crayon 4B et pierre d'ardoise d'atelier"
   },
   {
     id: "crisp_linen",
     hex: "#F5F3EC",
-    nameEn: "Raw Crisp Linen",
+    name: "Lin Brut Naturel",
     nameFr: "Lin Brut Naturel",
     tone: "neutral",
-    descriptionEn: "Pure unbleached organic linen weave",
+    description: "Lin pur lavé aux reflets d'ivoire et d'avoine",
     descriptionFr: "Lin pur lavé aux reflets d'ivoire et d'avoine"
   },
   {
     id: "midnight_black",
     hex: "#18181A",
-    nameEn: "Studio Black",
+    name: "Noir d'Encre Atelier",
     nameFr: "Noir d'Encre Atelier",
     tone: "deep",
-    descriptionEn: "Deep Indian ink, like Mariem's favorite concert tee",
+    description: "Encre de Chine pure, intemporelle et minimaliste",
     descriptionFr: "Encre de Chine pure, intemporelle et minimaliste"
   },
   {
     id: "burgundy_wine",
     hex: "#6E1B28",
-    nameEn: "Bordeaux Wine",
+    name: "Bordeaux Grand Cru",
     nameFr: "Bordeaux Grand Cru",
     tone: "deep",
-    descriptionEn: "Intense vintage red wine, dramatic and refined",
+    description: "Rouge grenat profond aux reflets rubis feutrés",
     descriptionFr: "Rouge grenat profond aux reflets rubis feutrés"
   }
 ];
@@ -153,45 +153,45 @@ export const COLOR_PALETTE = [
 export const PATTERNS = [
   {
     id: "plain",
-    nameEn: "Solid Pure Weave",
-    nameFr: "Uni Tissé Pur",
-    descEn: "Classic minimalist solid textile with subtle grain",
+    name: "Uni",
+    nameFr: "Uni",
+    desc: "Élégance minimaliste, met en valeur la coupe et la matière",
     descFr: "Élégance minimaliste, met en valeur la coupe et la matière"
   },
   {
     id: "stripes",
-    nameEn: "Tailor Stripes",
-    nameFr: "Rayures Fines Tailleur",
-    descEn: "Subtle pin-stripes drawn with architectural precision",
-    descFr: "Rayures craie délicates inspirées des beaux costumes"
+    name: "Rayures",
+    nameFr: "Rayures",
+    desc: "Rayures craie délicates inspirées des beaux costumes tailleur",
+    descFr: "Rayures craie délicates inspirées des beaux costumes tailleur"
   },
   {
     id: "dots",
-    nameEn: "Atelier Polka Dots",
-    nameFr: "Pois Rétro Délicats",
-    descEn: "Charming scattered pin dots with vintage French flair",
-    descFr: "Petits pois aériens au charme parisien intemporel"
+    name: "Pois",
+    nameFr: "Pois",
+    desc: "Petits pois rétro aériens au charme parisien intemporel",
+    descFr: "Petits pois rétro aériens au charme parisien intemporel"
   },
   {
     id: "checks",
-    nameEn: "Windowpane Checks",
-    nameFr: "Carreaux Architecturaux",
-    descEn: "Crisp grid checks inspired by drafted floor plans",
-    descFr: "Quadrillage géométrique inspiré du papier millimétré"
+    name: "Carreaux",
+    nameFr: "Carreaux",
+    desc: "Quadrillage géométrique inspiré du tracé architectural",
+    descFr: "Quadrillage géométrique inspiré du tracé architectural"
   },
   {
     id: "houndstooth",
-    nameEn: "Mini Houndstooth",
-    nameFr: "Pied-de-Poule Couture",
-    descEn: "Iconic haute-couture micro houndstooth weave",
+    name: "Pied-de-poule",
+    nameFr: "Pied-de-poule",
+    desc: "Tissage iconique haute couture chic et structuré",
     descFr: "Tissage iconique haute couture chic et structuré"
   },
   {
     id: "floral",
-    nameEn: "Botanical Sprigs",
-    nameFr: "Semis Botanique",
-    descEn: "Delicate embroidered wildflowers and leaves",
-    descFr: "Petites fleurs et feuilles champêtres brodées"
+    name: "Fleurs",
+    nameFr: "Fleurs",
+    desc: "Petites fleurs et feuilles champêtres délicatement brodées",
+    descFr: "Petites fleurs et feuilles champêtres délicatement brodées"
   }
 ];
 
@@ -201,305 +201,305 @@ export const EMBROIDERY_PRESETS = [
   "Studio 24",
   "C'est la vie",
   "Fait Main",
-  "Bespoke",
-  "Dreamer",
-  "Art & Seam"
+  "Sur-Mesure",
+  "Poésie",
+  "Art & Couture"
 ];
 
 export const THREAD_COLORS = [
-  { id: "gold", hex: "#E0B354", nameEn: "Gilded Gold", nameFr: "Or Satiné" },
-  { id: "cream", hex: "#FFFDF6", nameEn: "Ivory Silk", nameFr: "Soie Écrue" },
-  { id: "terracotta", hex: "#C2542B", nameEn: "Atelier Rust", nameFr: "Rouille Atelier" },
-  { id: "navy", hex: "#1D2A44", nameEn: "Navy Blue", nameFr: "Bleu Nuit" },
-  { id: "rose", hex: "#E8998D", nameEn: "Blush Pink", nameFr: "Rose Doux" }
+  { id: "gold", hex: "#E0B354", name: "Or Satiné", nameFr: "Or Satiné" },
+  { id: "cream", hex: "#FFFDF6", name: "Soie Écrue", nameFr: "Soie Écrue" },
+  { id: "terracotta", hex: "#C2542B", name: "Rouille Atelier", nameFr: "Rouille Atelier" },
+  { id: "navy", hex: "#1D2A44", name: "Bleu Nuit", nameFr: "Bleu Nuit" },
+  { id: "rose", hex: "#E8998D", name: "Rose Doux", nameFr: "Rose Doux" }
 ];
 
-// All Garment Pieces
+// Modèles de Vêtements (Noms officiels demandés)
 export const GARMENT_PIECES = [
-  // TOPS
+  // HAUTS (tops)
   {
     id: "chemise",
     category: "tops",
     gender: "both",
-    nameEn: "Bespoke Shirt",
-    nameFr: "Chemise Sur-Mesure",
+    name: "Chemise",
+    nameFr: "Chemise",
     iconName: "shirt",
     slot: "top",
-    styleQuestionEn: "Which collar and fit would you like for your chemise?",
-    styleQuestionFr: "Quelle coupe et quel col préférez-vous pour votre chemise ?",
+    styleQuestion: "Quelle coupe et quel col souhaites-tu pour ta chemise\u00A0?",
+    styleQuestionFr: "Quelle coupe et quel col souhaites-tu pour ta chemise\u00A0?",
     styles: [
-      { id: "classic", nameEn: "Classic Tailored", nameFr: "Classique Tailleur", descEn: "Crisp spread collar, mother-of-pearl buttons, tailored darts", descFr: "Col français net, boutons nacre et pinces cintrées" },
-      { id: "oversized", nameEn: "Boyfriend Oversized", nameFr: "Oversized Flou", descEn: "Relaxed dropped shoulders, curved hem, breezy drape", descFr: "Épaules tombantes, bas arrondi, tombé fluide et décontracté" },
-      { id: "linen", nameEn: "Mandarin Collar (Grandad)", nameFr: "Col Officier Lin", descEn: "Clean collarless band, half-placket, relaxed coastal look", descFr: "Pied de col épuré sans rabat, demi-patte de boutonnage" },
-      { id: "streetwear", nameEn: "Camp Collar Boxy", nameFr: "Col Cubain Boxy", descEn: "Cuban revere collar, straight boxy cut, chest patch pocket", descFr: "Col tailleur ouvert à plat, coupe carrée streetwear" }
+      { id: "classic", name: "Classique Tailleur", nameFr: "Classique Tailleur", desc: "Col français net, boutons nacre et pinces cintrées", descFr: "Col français net, boutons nacre et pinces cintrées" },
+      { id: "oversized", name: "Oversized Flou", nameFr: "Oversized Flou", desc: "Épaules tombantes, bas arrondi, tombé fluide et décontracté", descFr: "Épaules tombantes, bas arrondi, tombé fluide et décontracté" },
+      { id: "linen", name: "Col Officier Lin", nameFr: "Col Officier Lin", desc: "Pied de col épuré sans rabat, demi-patte de boutonnage", descFr: "Pied de col épuré sans rabat, demi-patte de boutonnage" },
+      { id: "streetwear", name: "Col Cubain Boxy", nameFr: "Col Cubain Boxy", desc: "Col tailleur ouvert à plat, coupe carrée décontractée", descFr: "Col tailleur ouvert à plat, coupe carrée décontractée" }
     ]
   },
   {
     id: "pull",
     category: "tops",
     gender: "both",
-    nameEn: "Knit Sweater",
-    nameFr: "Pull Tricoté",
+    name: "Pull",
+    nameFr: "Pull",
     iconName: "sweater",
     slot: "top",
-    styleQuestionEn: "Which knit neckline and stitch style shall we knit?",
-    styleQuestionFr: "Quelle encolure et quel style de maille souhaitez-vous tricoter ?",
+    styleQuestion: "Quelle encolure et quel style de maille souhaites-tu tricoter\u00A0?",
+    styleQuestionFr: "Quelle encolure et quel style de maille souhaites-tu tricoter\u00A0?",
     styles: [
-      { id: "round", nameEn: "Classic Crewneck", nameFr: "Col Rond Essentiel", descEn: "Ribbed collar and cuffs, cozy medium-gauge knit", descFr: "Bord-côte soigné, jauge moyenne confortable et douce" },
-      { id: "turtleneck", nameEn: "Folded Turtleneck", nameFr: "Col Roulé Architecte", descEn: "Chic roll-neck collar, warming and sophisticated", descFr: "Col montant douillet, allure étudiante intellectuelle" },
-      { id: "cardigan", nameEn: "V-Neck Button Cardigan", nameFr: "Gilet Cardigan V", descEn: "Tortoiseshell buttons, slouchy pockets, layering favorite", descFr: "Boutons écaille de tortue, deux poches plaquées réconfortantes" },
-      { id: "zip", nameEn: "Quarter-Zip Alpine", nameFr: "Col Montant Demi-Zip", descEn: "Brass zipper pull, athletic ribbing, modern atelier vibe", descFr: "Curseur laiton vintage, côte anglaise et silhouette sportive" }
+      { id: "round", name: "Col Rond Essentiel", nameFr: "Col Rond Essentiel", desc: "Bord-côte soigné, jauge moyenne confortable et douce", descFr: "Bord-côte soigné, jauge moyenne confortable et douce" },
+      { id: "turtleneck", name: "Col Roulé Architecte", nameFr: "Col Roulé Architecte", desc: "Col montant douillet, allure étudiante intellectuelle", descFr: "Col montant douillet, allure étudiante intellectuelle" },
+      { id: "cardigan", name: "Gilet Cardigan V", nameFr: "Gilet Cardigan V", desc: "Boutons écaille de tortue, deux poches plaquées réconfortantes", descFr: "Boutons écaille de tortue, deux poches plaquées réconfortantes" },
+      { id: "zip", name: "Col Montant Demi-Zip", nameFr: "Col Montant Demi-Zip", desc: "Curseur laiton vintage, côte anglaise et silhouette sportive", descFr: "Curseur laiton vintage, côte anglaise et silhouette sportive" }
     ]
   },
   {
     id: "tshirt",
     category: "tops",
     gender: "both",
-    nameEn: "Heavyweight T-Shirt",
-    nameFr: "T-Shirt Coton Lourd",
+    name: "T-shirt",
+    nameFr: "T-shirt",
     iconName: "shirt",
     slot: "top",
-    styleQuestionEn: "How do you like the cut and neckline of your t-shirt?",
-    styleQuestionFr: "Comment aimez-vous la coupe et l'encolure de votre t-shirt ?",
+    styleQuestion: "Comment imagines-tu la coupe et l'encolure de ton t-shirt\u00A0?",
+    styleQuestionFr: "Comment imagines-tu la coupe et l'encolure de ton t-shirt\u00A0?",
     styles: [
-      { id: "crew", nameEn: "Heavy Crewneck (240gsm)", nameFr: "Col Rond Épais (240g)", descEn: "Dense combed cotton, thick rib collar, structured silhouette", descFr: "Coton peigné très dense, col épais qui ne se déforme jamais" },
-      { id: "oversized", nameEn: "Boxy Streetwear Drop", nameFr: "Boxy Oversize Urbain", descEn: "Wide torso, dropped elbow-length sleeves, relaxed attitude", descFr: "Buste large, manches tombant au coude, esprit streetwear" },
-      { id: "cropped", nameEn: "Modern Crop / Fitted", nameFr: "Coupe Cropped / Ajustée", descEn: "Hits right at the natural waistline with clean double stitching", descFr: "Taille haute marquée, ourlet double aiguille net" },
-      { id: "vneck", nameEn: "Relaxed V-Neck", nameFr: "Col V Doux Décolleté", descEn: "Gentle shallow V, soft drape, effortless everyday staple", descFr: "Col V discret sans excès, draperie fluide et légère" }
+      { id: "crew", name: "Col Rond Épais (240g)", nameFr: "Col Rond Épais (240g)", desc: "Coton peigné très dense, col épais indéformable", descFr: "Coton peigné très dense, col épais indéformable" },
+      { id: "oversized", name: "Boxy Oversize Urbain", nameFr: "Boxy Oversize Urbain", desc: "Buste large, manches tombant au coude, esprit streetwear", descFr: "Buste large, manches tombant au coude, esprit streetwear" },
+      { id: "cropped", name: "Coupe Cropped Ajustée", nameFr: "Coupe Cropped Ajustée", desc: "Taille haute marquée, ourlet double aiguille net", descFr: "Taille haute marquée, ourlet double aiguille net" },
+      { id: "vneck", name: "Col V Doux Décolleté", nameFr: "Col V Doux Décolleté", desc: "Col V discret sans excès, draperie fluide et légère", descFr: "Col V discret sans excès, draperie fluide et légère" }
     ]
   },
   {
     id: "hoodie",
     category: "tops",
     gender: "both",
-    nameEn: "Studio Hoodie",
-    nameFr: "Sweat à Capuche",
+    name: "Sweat à capuche",
+    nameFr: "Sweat à capuche",
     iconName: "hoodie",
     slot: "top",
-    styleQuestionEn: "Which hoodie construction is your study-session staple?",
-    styleQuestionFr: "Quelle coupe de sweat à capuche accompagne vos sessions de travail ?",
+    styleQuestion: "Quelle coupe de sweat à capuche accompagnera tes journées\u00A0?",
+    styleQuestionFr: "Quelle coupe de sweat à capuche accompagnera tes journées\u00A0?",
     styles: [
-      { id: "kangaroo", nameEn: "Classic Pullover Kangaroo", nameFr: "Poche Kangourou Culte", descEn: "Double-lined cozy hood, front pouch pocket, thick cord pull", descFr: "Grande capuche doublée, poche ventrale spacieuse, cordons épais" },
-      { id: "zip", nameEn: "Full Brass Zip-Up", nameFr: "Zippé Entier Métal", descEn: "Two-way brass zipper, split pockets, easy to layer over tees", descFr: "Zip laiton double sens, parfait à superposer sur un t-shirt" },
-      { id: "oversized", nameEn: "Cocoon Heavyweight Fleece", nameFr: "Cocoon Molleton Polaire", descEn: "Ultra-heavy 400gsm brushed cotton, huge drop-shoulder hood", descFr: "Molleton 400g gratté ultra-doux, volume généreux d'atelier" },
-      { id: "cropped", nameEn: "Cropped Raw Hem", nameFr: "Cropped Ourlet Franc", descEn: "Slightly shortened hemline, high-waist complimenting cut", descFr: "Coupe raccourcie moderne idéale sur les pantalons taille haute" }
+      { id: "kangaroo", name: "Poche Kangourou Culte", nameFr: "Poche Kangourou Culte", desc: "Grande capuche doublée, poche ventrale spacieuse, cordons épais", descFr: "Grande capuche doublée, poche ventrale spacieuse, cordons épais" },
+      { id: "zip", name: "Zippé Entier Métal", nameFr: "Zippé Entier Métal", desc: "Zip laiton double sens, parfait à superposer sur un t-shirt", descFr: "Zip laiton double sens, parfait à superposer sur un t-shirt" },
+      { id: "oversized", name: "Cocoon Molleton Polaire", nameFr: "Cocoon Molleton Polaire", desc: "Molleton 400g gratté ultra-doux, volume généreux d'atelier", descFr: "Molleton 400g gratté ultra-doux, volume généreux d'atelier" },
+      { id: "cropped", name: "Cropped Ourlet Franc", nameFr: "Cropped Ourlet Franc", desc: "Coupe raccourcie moderne idéale sur les pantalons taille haute", descFr: "Coupe raccourcie moderne idéale sur les pantalons taille haute" }
     ]
   },
 
-  // BOTTOMS
+  // BAS (bottoms)
   {
     id: "pantalon",
     category: "bottoms",
     gender: "both",
-    nameEn: "Pleated Trousers",
-    nameFr: "Pantalon à Pinces",
+    name: "Pantalon",
+    nameFr: "Pantalon",
     iconName: "pants",
     slot: "bottom",
-    styleQuestionEn: "How would you like the trousers cut and pleated?",
-    styleQuestionFr: "Quelle ligne et quelles pinces souhaitez-vous pour ce pantalon ?",
+    styleQuestion: "Quelle ligne et quelles pinces préfères-tu pour ton pantalon\u00A0?",
+    styleQuestionFr: "Quelle ligne et quelles pinces préfères-tu pour ton pantalon\u00A0?",
     styles: [
-      { id: "wide", nameEn: "Wide-Leg Double Pleat", nameFr: "Jambe Large Double Pince", descEn: "Dramatic fluid drape, high rise, deep front architectural pleats", descFr: "Tombé fluide et théâtral, taille haute, doubles pinces profondes" },
-      { id: "tailored", nameEn: "Tailored Tapered", nameFr: "Carotte Fuselé Élégant", descEn: "Comfortable through the thigh, gently tapering down to the ankle", descFr: "Aisance aux cuisses et bas de jambe fuselé au ras de la cheville" },
-      { id: "cargo", nameEn: "Atelier Cargo Pockets", nameFr: "Cargo Minimaliste", descEn: "Streamlined gusseted 3D cargo pockets, durable reinforced knees", descFr: "Poches cargo à soufflet plates, coutures renforcées aux genoux" },
-      { id: "straight", nameEn: "Classic Straight Leg", nameFr: "Droit Intemporel", descEn: "Clean straight cut from hip to hem with pressed crease", descFr: "Ligne droite parfaite de la hanche à l'ourlet avec pli marqué" }
+      { id: "wide", name: "Jambe Large Double Pince", nameFr: "Jambe Large Double Pince", desc: "Tombé fluide et théâtral, taille haute, doubles pinces profondes", descFr: "Tombé fluide et théâtral, taille haute, doubles pinces profondes" },
+      { id: "tailored", name: "Carotte Fuselé Élégant", nameFr: "Carotte Fuselé Élégant", desc: "Aisance aux cuisses et bas de jambe fuselé au ras de la cheville", descFr: "Aisance aux cuisses et bas de jambe fuselé au ras de la cheville" },
+      { id: "cargo", name: "Cargo Minimaliste", nameFr: "Cargo Minimaliste", desc: "Poches cargo à soufflet plates, coutures renforcées aux genoux", descFr: "Poches cargo à soufflet plates, coutures renforcées aux genoux" },
+      { id: "straight", name: "Droit Intemporel", nameFr: "Droit Intemporel", desc: "Ligne droite parfaite de la hanche à l'ourlet avec pli marqué", descFr: "Ligne droite parfaite de la hanche à l'ourlet avec pli marqué" }
     ]
   },
   {
     id: "jean",
     category: "bottoms",
     gender: "both",
-    nameEn: "Artisan Denim Jeans",
-    nameFr: "Jean Denim Selvedge",
+    name: "Jean",
+    nameFr: "Jean",
     iconName: "pants",
     slot: "bottom",
-    styleQuestionEn: "Which denim silhouette do you want Mariem to pattern?",
-    styleQuestionFr: "Quelle coupe de jean souhaitez-vous que Mariem patronne ?",
+    styleQuestion: "Quelle coupe de jean souhaites-tu que je patronne pour toi\u00A0?",
+    styleQuestionFr: "Quelle coupe de jean souhaites-tu que je patronne pour toi\u00A0?",
     styles: [
-      { id: "straight", nameEn: "Vintage Straight Leg (90s)", nameFr: "Droit Vintage Années 90", descEn: "Authentic regular fit, copper rivets, classic five pockets", descFr: "Taille mi-haute, rivets en cuivre, authenticité des années 90" },
-      { id: "baggy", nameEn: "Skater Baggy Slouch", nameFr: "Baggy Ample Décontracté", descEn: "Low-slung relaxed thigh and leg, street-ready pool on sneakers", descFr: "Coupe généreuse et nonchalante qui retombe bien sur les sneakers" },
-      { id: "flared", nameEn: "Flared Bootcut (70s)", nameFr: "Évasé Bootcut Rétro", descEn: "Fitted through thigh with an elegant flare from knee to hem", descFr: "Ajusté sur la cuisse et évasé sous le genou, silhouette élancée" },
-      { id: "slim", nameEn: "Slim Clean Taper", nameFr: "Semi-Ajusté Épuré", descEn: "Neat modern profile with just enough stretch for easy movement", descFr: "Coupe nette et ajustée sans comprimer, confort au quotidien" }
+      { id: "straight", name: "Droit Vintage Années 90", nameFr: "Droit Vintage Années 90", desc: "Taille mi-haute, rivets en cuivre, authenticité des années 90", descFr: "Taille mi-haute, rivets en cuivre, authenticité des années 90" },
+      { id: "baggy", name: "Baggy Ample Décontracté", nameFr: "Baggy Ample Décontracté", desc: "Coupe généreuse et nonchalante qui retombe bien sur les souliers", descFr: "Coupe généreuse et nonchalante qui retombe bien sur les souliers" },
+      { id: "flared", name: "Évasé Bootcut Rétro", nameFr: "Évasé Bootcut Rétro", desc: "Ajusté sur la cuisse et évasé sous le genou, silhouette élancée", descFr: "Ajusté sur la cuisse et évasé sous le genou, silhouette élancée" },
+      { id: "slim", name: "Semi-Ajusté Épuré", nameFr: "Semi-Ajusté Épuré", desc: "Coupe nette et ajustée sans comprimer, confort au quotidien", descFr: "Coupe nette et ajustée sans comprimer, confort au quotidien" }
     ]
   },
   {
     id: "short",
     category: "bottoms",
     gender: "both",
-    nameEn: "Tailored Shorts",
-    nameFr: "Short Tailleur & Bermuda",
+    name: "Short",
+    nameFr: "Short",
     iconName: "shorts",
     slot: "bottom",
-    styleQuestionEn: "Which length and styling fits your aesthetic?",
-    styleQuestionFr: "Quelle longueur et quelle coupe s'accordent à votre style ?",
+    styleQuestion: "Quelle longueur et quelle allure s'accordent le mieux à ton style\u00A0?",
+    styleQuestionFr: "Quelle longueur et quelle allure s'accordent le mieux à ton style\u00A0?",
     styles: [
-      { id: "bermuda", nameEn: "Pleated Knee Bermuda", nameFr: "Bermuda Long à Pinces", descEn: "Sophisticated tailored cut hitting just above the knee cap", descFr: "Ligne habillée chic effleurant le genou, allure sartoriale" },
-      { id: "denim", nameEn: "Cuffed Raw Denim Short", nameFr: "Short Denim Revers", descEn: "Rolled cuffs, sturdy twill fabric, vintage brass shank button", descFr: "Revers piqués, toile twill robuste et bouton laiton vieilli" },
-      { id: "sporty", nameEn: "Retro Athletic Boxer", nameFr: "Boxer Athlétique Cordon", descEn: "Elastic waistband with cotton drawstring, rounded split hem", descFr: "Ceinture élastiquée à cordon coton, fentes latérales arrondies" },
-      { id: "linen", nameEn: "High-Waist Linen Short", nameFr: "Short Lin Taille Haute", descEn: "Paperbag high waist with fabric tie belt, breezy and light", descFr: "Taille haute froncée avec ceinture à nouer, frais et estival" }
+      { id: "bermuda", name: "Bermuda Long à Pinces", nameFr: "Bermuda Long à Pinces", desc: "Ligne habillée chic effleurant le genou, allure sartoriale", descFr: "Ligne habillée chic effleurant le genou, allure sartoriale" },
+      { id: "denim", name: "Short Denim Revers", nameFr: "Short Denim Revers", desc: "Revers piqués, toile twill robuste et bouton laiton vieilli", descFr: "Revers piqués, toile twill robuste et bouton laiton vieilli" },
+      { id: "sporty", name: "Boxer Athlétique Cordon", nameFr: "Boxer Athlétique Cordon", desc: "Ceinture élastiquée à cordon coton, fentes latérales arrondies", descFr: "Ceinture élastiquée à cordon coton, fentes latérales arrondies" },
+      { id: "linen", name: "Short Lin Taille Haute", nameFr: "Short Lin Taille Haute", desc: "Taille haute froncée avec ceinture à nouer, frais et estival", descFr: "Taille haute froncée avec ceinture à nouer, frais et estival" }
     ]
   },
   {
     id: "jupe",
     category: "bottoms",
     gender: "femme",
-    nameEn: "Bespoke Skirt",
-    nameFr: "Jupe Sur-Mesure",
+    name: "Jupe",
+    nameFr: "Jupe",
     iconName: "skirt",
     slot: "bottom",
-    styleQuestionEn: "Which skirt movement and silhouette shall we design?",
-    styleQuestionFr: "Quel tombé et quelle longueur souhaitez-vous pour cette jupe ?",
+    styleQuestion: "Quel tombé et quelle longueur souhaites-tu pour ta jupe\u00A0?",
+    styleQuestionFr: "Quel tombé et quelle longueur souhaites-tu pour ta jupe\u00A0?",
     styles: [
-      { id: "pleated", nameEn: "Accordion Pleated Midi", nameFr: "Midi Plissée Soleil", descEn: "Crisp sunray pleats that float with every step, midi length", descFr: "Plissé soleil régulier et vaporeux, longueur mi-mollet raffinée" },
-      { id: "mini", nameEn: "A-Line Tailored Mini", nameFr: "Mini Trapèze Sixties", descEn: "Flattering A-line trapezoid cut, side invisible zipper", descFr: "Ligne trapèze structurée, zip invisible sur la hanche" },
-      { id: "wrap", nameEn: "Asymmetric Wrap Skirt", nameFr: "Portefeuille Asymétrique", descEn: "Tie-side sash, overlapping graceful drape with movement", descFr: "Nouée sur le côté, pan croisé ondulant à chaque pas" },
-      { id: "pencil", nameEn: "High-Waist Slit Pencil", nameFr: "Jupe Crayon Fendue", descEn: "Fitted silhouette with a rear walking vent, pure elegance", descFr: "Ligne ajustée élancée avec fente d'aisance au dos" }
+      { id: "pleated", name: "Midi Plissée Soleil", nameFr: "Midi Plissée Soleil", desc: "Plissé soleil régulier et vaporeux, longueur mi-mollet raffinée", descFr: "Plissé soleil régulier et vaporeux, longueur mi-mollet raffinée" },
+      { id: "mini", name: "Mini Trapèze Sixties", nameFr: "Mini Trapèze Sixties", desc: "Ligne trapèze structurée, zip invisible sur la hanche", descFr: "Ligne trapèze structurée, zip invisible sur la hanche" },
+      { id: "wrap", name: "Portefeuille Asymétrique", nameFr: "Portefeuille Asymétrique", desc: "Nouée sur le côté, pan croisé ondulant à chaque pas", descFr: "Nouée sur le côté, pan croisé ondulant à chaque pas" },
+      { id: "pencil", name: "Jupe Crayon Fendue", nameFr: "Jupe Crayon Fendue", desc: "Ligne ajustée élancée avec fente d'aisance au dos", descFr: "Ligne ajustée élancée avec fente d'aisance au dos" }
     ]
   },
 
-  // ONEPIECE
+  // PIÈCES UNIQUES (onepiece)
   {
     id: "robe",
     category: "onepiece",
     gender: "femme",
-    nameEn: "Atelier Dress",
-    nameFr: "Robe d'Atelier",
+    name: "Robe",
+    nameFr: "Robe",
     iconName: "dress",
     slot: "onepiece",
-    styleQuestionEn: "Which dress silhouette shall Mariem craft for you?",
-    styleQuestionFr: "Quelle coupe de robe souhaitez-vous que Mariem confectionne ?",
+    styleQuestion: "Quelle silhouette de robe souhaites-tu que je confectionne\u00A0?",
+    styleQuestionFr: "Quelle silhouette de robe souhaites-tu que je confectionne\u00A0?",
     styles: [
-      { id: "slip", nameEn: "Bias-Cut Silk Slip Dress", nameFr: "Robe Nuisette Coupée en Biais", descEn: "Liquid bias drape that skims curves, delicate spaghetti straps", descFr: "Tombé fluide épousant les mouvements, bretelles fines spaghettis" },
-      { id: "wrap", nameEn: "Midi Wrap Dress with Sash", nameFr: "Robe Portefeuille Cache-Cœur", descEn: "Flattering crossover V neckline, tie belt, flutter hem", descFr: "Encolure croisée en V, ceinture nouée et bas virevoltant" },
-      { id: "shirt", nameEn: "Tailored Shirt Dress", nameFr: "Robe Chemise Ceinturée", descEn: "Full button front, crisp collar, removable waist sash, pockets!", descFr: "Boutonnée de haut en bas, col chemise net et vraies poches !" },
-      { id: "sweater", nameEn: "Ribbed Knit Turtleneck Dress", nameFr: "Robe Maille Col Montant", descEn: "Cozy stretch knit, midi length, warm and sculpting", descFr: "Maille côtelée souple et extensible, longueur genou ultra-douce" }
+      { id: "slip", name: "Robe Nuisette Coupée en Biais", nameFr: "Robe Nuisette Coupée en Biais", desc: "Tombé fluide épousant les mouvements, bretelles fines spaghettis", descFr: "Tombé fluide épousant les mouvements, bretelles fines spaghettis" },
+      { id: "wrap", name: "Robe Portefeuille Cache-Cœur", nameFr: "Robe Portefeuille Cache-Cœur", desc: "Encolure croisée en V, ceinture nouée et bas virevoltant", descFr: "Encolure croisée en V, ceinture nouée et bas virevoltant" },
+      { id: "shirt", name: "Robe Chemise Ceinturée", nameFr: "Robe Chemise Ceinturée", desc: "Boutonnée de haut en bas, col chemise net et vraies poches", descFr: "Boutonnée de haut en bas, col chemise net et vraies poches" },
+      { id: "sweater", name: "Robe Maille Col Montant", nameFr: "Robe Maille Col Montant", desc: "Maille côtelée souple et extensible, longueur genou ultra-douce", descFr: "Maille côtelée souple et extensible, longueur genou ultra-douce" }
     ]
   },
   {
     id: "costume",
     category: "onepiece",
     gender: "both",
-    nameEn: "Tailored Two-Piece Suit",
-    nameFr: "Costume Deux-Pièces",
+    name: "Costume",
+    nameFr: "Costume",
     iconName: "suit",
     slot: "onepiece",
-    styleQuestionEn: "Which sartorial suit cut represents your confidence?",
-    styleQuestionFr: "Quel style de costume deux-pièces affirme votre silhouette ?",
+    styleQuestion: "Quel style de costume deux-pièces affirme le mieux ton allure\u00A0?",
+    styleQuestionFr: "Quel style de costume deux-pièces affirme le mieux ton allure\u00A0?",
     styles: [
-      { id: "double", nameEn: "Double-Breasted Sartorial", nameFr: "Croisé Sartorial Structuré", descEn: "Peak lapels, six brass buttons, bold shoulder pads and drape", descFr: "Revers en pointe, boutonnage croisé six boutons, épaulettes nettes" },
-      { id: "classic", nameEn: "Single-Breasted Two-Button", nameFr: "Droit Classique Deux Boutons", descEn: "Notch lapel, two horn buttons, timeless elegance for any hall", descFr: "Revers à cran, deux boutons en corne, élégance absolue" },
-      { id: "relaxed", nameEn: "Relaxed Linen Atelier Suit", nameFr: "Ensemble Veste Souple Déstructuré", descEn: "Unlined, soft natural shoulders, patch pockets, easy cool", descFr: "Veste sans doublure, poches plaquées, décontraction chic d'atelier" },
-      { id: "tuxedo", nameEn: "Midnight Shawl Lapel Tux", nameFr: "Smoking Col Châle Soirée", descEn: "Satin shawl collar, covered buttons, pure evening mystery", descFr: "Col châle en satin soyeux, boutons recouverts, allure de gala" }
+      { id: "double", name: "Croisé Sartorial Structuré", nameFr: "Croisé Sartorial Structuré", desc: "Revers en pointe, boutonnage croisé six boutons, épaulettes nettes", descFr: "Revers en pointe, boutonnage croisé six boutons, épaulettes nettes" },
+      { id: "classic", name: "Droit Classique Deux Boutons", nameFr: "Droit Classique Deux Boutons", desc: "Revers à cran, deux boutons en corne, élégance absolue", descFr: "Revers à cran, deux boutons en corne, élégance absolue" },
+      { id: "relaxed", name: "Ensemble Veste Souple Déstructuré", nameFr: "Ensemble Veste Souple Déstructuré", desc: "Veste sans doublure, poches plaquées, décontraction chic d'atelier", descFr: "Veste sans doublure, poches plaquées, décontraction chic d'atelier" },
+      { id: "tuxedo", name: "Smoking Col Châle Soirée", nameFr: "Smoking Col Châle Soirée", desc: "Col châle en satin soyeux, boutons recouverts, allure de gala", descFr: "Col châle en satin soyeux, boutons recouverts, allure de gala" }
     ]
   },
 
-  // OUTERWEAR
+  // MANTEAUX & VESTES (outerwear)
   {
     id: "veste",
     category: "outerwear",
     gender: "both",
-    nameEn: "Bespoke Jacket",
-    nameFr: "Veste d'Atelier",
+    name: "Veste",
+    nameFr: "Veste",
     iconName: "jacket",
     slot: "outerwear",
-    styleQuestionEn: "Which jacket silhouette would you like Mariem to construct?",
-    styleQuestionFr: "Quelle coupe de veste souhaitez-vous que Mariem assemble ?",
+    styleQuestion: "Quelle coupe de veste d'atelier souhaites-tu que j'assemble\u00A0?",
+    styleQuestionFr: "Quelle coupe de veste d'atelier souhaites-tu que j'assemble\u00A0?",
     styles: [
-      { id: "denim", nameEn: "Type-3 Trucker Jacket", nameFr: "Veste Trucker Ouvrière", descEn: "Chest flap pockets, pointed waist tabs, antique bronze buttons", descFr: "Poches poitrine à rabat, boutons tige bronze, surpiqûres visibles" },
-      { id: "bomber", nameEn: "MA-1 Flight Bomber", nameFr: "Bomber MA-1 Aviateur", descEn: "Ribbed knit collar and cuffs, sleeve utility pocket, puffy lining", descFr: "Col et poignets en tricot côtelé, poche zip sur la manche" },
-      { id: "blazer", nameEn: "Oversized Studio Blazer", nameFr: "Blazer Oversize d'Architecte", descEn: "Pronounced boxy shoulders, jetted pockets, sleek modern line", descFr: "Épaules carrées assumées, poches passepoilées, coupe moderne" },
-      { id: "chore", nameEn: "French Chore Work Jacket", nameFr: "Bleu de Travail Français", descEn: "Three large patch pockets, pointed collar, durable twill canvas", descFr: "Trois grandes poches plaquées, toile canevas résistante d'artisan" }
+      { id: "denim", name: "Veste Trucker Ouvrière", nameFr: "Veste Trucker Ouvrière", desc: "Poches poitrine à rabat, boutons tige bronze, surpiqûres visibles", descFr: "Poches poitrine à rabat, boutons tige bronze, surpiqûres visibles" },
+      { id: "bomber", name: "Bomber MA-1 Aviateur", nameFr: "Bomber MA-1 Aviateur", desc: "Col et poignets en tricot côtelé, poche zip sur la manche", descFr: "Col et poignets en tricot côtelé, poche zip sur la manche" },
+      { id: "blazer", name: "Blazer Oversize d'Architecte", nameFr: "Blazer Oversize d'Architecte", desc: "Épaules carrées assumées, poches passepoilées, coupe moderne", descFr: "Épaules carrées assumées, poches passepoilées, coupe moderne" },
+      { id: "chore", name: "Bleu de Travail Français", nameFr: "Bleu de Travail Français", desc: "Trois grandes poches plaquées, toile canevas résistante d'artisan", descFr: "Trois grandes poches plaquées, toile canevas résistante d'artisan" }
     ]
   },
   {
     id: "manteau",
     category: "outerwear",
     gender: "both",
-    nameEn: "Overcoat & Trench",
-    nameFr: "Manteau & Trench",
+    name: "Manteau",
+    nameFr: "Manteau",
     iconName: "coat",
     slot: "outerwear",
-    styleQuestionEn: "How would you like your winter overcoat styled?",
-    styleQuestionFr: "Quelle coupe d'hiver ou de mi-saison vous protégera du froid ?",
+    styleQuestion: "Quelle coupe d'hiver ou de mi-saison te protégera avec élégance\u00A0?",
+    styleQuestionFr: "Quelle coupe d'hiver ou de mi-saison te protégera avec élégance\u00A0?",
     styles: [
-      { id: "trench", nameEn: "Belted Gabardine Trench", nameFr: "Trench Ceinturé Gabardine", descEn: "Storm flap, horn buckle belt, cuff straps, water-repellent weave", descFr: "Bavolet tempête, boucle en corne, pattes aux poignets" },
-      { id: "wool", nameEn: "Double-Face Wool Chesterfield", nameFr: "Chesterfield en Laine Royale", descEn: "Mid-calf length, notch lapel, back walking vent, warm luxury", descFr: "Longueur mi-mollet, fente dorsale aisance, laine double-face chaude" },
-      { id: "duffle", nameEn: "Heritage Duffle Coat", nameFr: "Duffle-Coat à Cabillots", descEn: "Horn toggle closures, generous deep hood, plaid interior yoke", descFr: "Attaches cabillots en bois et corde, grande capuche protectrice" },
-      { id: "puffer", nameEn: "Quilted Puffer Cloud", nameFr: "Doudoune Matelassée Cocon", descEn: "Horizontal baffle quilting, high thermal collar, downy feel", descFr: "Boudins matelassés horizontaux, col montant cocon très chaud" }
+      { id: "trench", name: "Trench Ceinturé Gabardine", nameFr: "Trench Ceinturé Gabardine", desc: "Bavolet tempête, boucle en corne, pattes aux poignets", descFr: "Bavolet tempête, boucle en corne, pattes aux poignets" },
+      { id: "wool", name: "Chesterfield en Laine Royale", nameFr: "Chesterfield en Laine Royale", desc: "Longueur mi-mollet, fente dorsale aisance, laine double-face chaude", descFr: "Longueur mi-mollet, fente dorsale aisance, laine double-face chaude" },
+      { id: "duffle", name: "Duffle-Coat à Cabillots", nameFr: "Duffle-Coat à Cabillots", desc: "Attaches cabillots en bois et corde, grande capuche protectrice", descFr: "Attaches cabillots en bois et corde, grande capuche protectrice" },
+      { id: "puffer", name: "Doudoune Matelassée Cocon", nameFr: "Doudoune Matelassée Cocon", desc: "Boudins matelassés horizontaux, col montant cocon très chaud", descFr: "Boudins matelassés horizontaux, col montant cocon très chaud" }
     ]
   },
 
-  // ACCESSORIES
+  // ACCESSOIRES (accessories)
   {
     id: "echarpe",
     category: "accessories",
     gender: "both",
-    nameEn: "Woven Scarf",
-    nameFr: "Écharpe Tissée",
+    name: "Écharpe",
+    nameFr: "Écharpe",
     iconName: "scarf",
     slot: "neck",
-    styleQuestionEn: "Which scarf texture and wrap style shall we weave?",
-    styleQuestionFr: "Quel tissage et quel format d'écharpe vous feront chaud au cou ?",
+    styleQuestion: "Quel tissage et quel format d'écharpe te feront chaud au cou\u00A0?",
+    styleQuestionFr: "Quel tissage et quel format d'écharpe te feront chaud au cou\u00A0?",
     styles: [
-      { id: "chunky", nameEn: "Chunky Ribbed Blanket Scarf", nameFr: "Maxi Écharpe Maille Épaisse", descEn: "Generous 2-meter wrap length, plush warm yarn, fringed edges", descFr: "Deux mètres d'enveloppement doudou, franges artisanales" },
-      { id: "silk", nameEn: "Square Silk Twill Scarf", nameFr: "Carré de Soie Bord Roulotté", descEn: "Hand-rolled edges, lustrous sheen, chic Parisian tie", descFr: "Ourlet roulotté à la main, brillance soyeuse chic au cou ou cheveux" },
-      { id: "fringed", nameEn: "Cashmere Blend with Long Fringe", nameFr: "Pashmina Doux Frangé", descEn: "Lightweight yet intensely warm, delicate twisted tassels", descFr: "Léger comme une plume et pourtant très isolant, pompons torsadés" },
-      { id: "infinity", nameEn: "Infinity Snood Loop", nameFr: "Snood Tubulaire Sans Fin", descEn: "Continuous double loop, easy to slip over head, no loose ends", descFr: "Anneau sans couture à double tour, pratique à enfiler" }
+      { id: "chunky", name: "Maxi Écharpe Maille Épaisse", nameFr: "Maxi Écharpe Maille Épaisse", desc: "Deux mètres d'enveloppement doudou, franges artisanales", descFr: "Deux mètres d'enveloppement doudou, franges artisanales" },
+      { id: "silk", name: "Carré de Soie Bord Roulotté", nameFr: "Carré de Soie Bord Roulotté", desc: "Ourlet roulotté à la main, brillance soyeuse chic au cou ou cheveux", descFr: "Ourlet roulotté à la main, brillance soyeuse chic au cou ou cheveux" },
+      { id: "fringed", name: "Pashmina Doux Frangé", nameFr: "Pashmina Doux Frangé", desc: "Léger comme une plume et pourtant très isolant, pompons torsadés", descFr: "Léger comme une plume et pourtant très isolant, pompons torsadés" },
+      { id: "infinity", name: "Snood Tubulaire Sans Fin", nameFr: "Snood Tubulaire Sans Fin", desc: "Anneau sans couture à double tour, pratique à enfiler", descFr: "Anneau sans couture à double tour, pratique à enfiler" }
     ]
   },
   {
     id: "bonnet",
     category: "accessories",
     gender: "both",
-    nameEn: "Knit Beanie",
-    nameFr: "Bonnet Tricoté",
+    name: "Bonnet",
+    nameFr: "Bonnet",
     iconName: "beanie",
     slot: "head",
-    styleQuestionEn: "Which beanie silhouette crowns your head?",
-    styleQuestionFr: "Quelle forme de bonnet préférez-vous pour vos sorties ?",
+    styleQuestion: "Quelle forme de bonnet préféres-tu pour tes sorties d'atelier\u00A0?",
+    styleQuestionFr: "Quelle forme de bonnet préféres-tu pour tes sorties d'atelier\u00A0?",
     styles: [
-      { id: "cuffed", nameEn: "Ribbed Cuffed Watch Cap", nameFr: "Bonnet Revers Côte Anglaise", descEn: "Foldover cuff with Mariem's woven atelier label, stretchy fit", descFr: "Revers classique orné de l'étiquette d'atelier, côte extensible" },
-      { id: "fisherman", nameEn: "Short Fisherman Docker", nameFr: "Docker Marin Court", descEn: "Sits above the ears, compact sailor style, minimalist cool", descFr: "Se porte au-dessus des oreilles, coupe docker courte et nette" },
-      { id: "slouchy", nameEn: "Relaxed Slouchy Beanie", nameFr: "Bonnet Tombant Décontracté", descEn: "Longer crown that falls softly back, effortless student vibe", descFr: "Calotte allongée retombant doucement vers l'arrière" },
-      { id: "pompom", nameEn: "Winter Cable Knit with Pompom", nameFr: "Torsadé à Pompon Laine", descEn: "Traditional aran cable stitching with a fluffy yarn pompom", descFr: "Torsades traditionnelles irlandaises et pompon en laine touffu" }
+      { id: "cuffed", name: "Bonnet Revers Côte Anglaise", nameFr: "Bonnet Revers Côte Anglaise", desc: "Revers classique orné de l'étiquette d'atelier, côte extensible", descFr: "Revers classique orné de l'étiquette d'atelier, côte extensible" },
+      { id: "fisherman", name: "Docker Marin Court", nameFr: "Docker Marin Court", desc: "Se porte au-dessus des oreilles, coupe docker courte et nette", descFr: "Se porte au-dessus des oreilles, coupe docker courte et nette" },
+      { id: "slouchy", name: "Bonnet Tombant Décontracté", nameFr: "Bonnet Tombant Décontracté", desc: "Calotte allongée retombant doucement vers l'arrière", descFr: "Calotte allongée retombant doucement vers l'arrière" },
+      { id: "pompom", name: "Torsadé à Pompon Laine", nameFr: "Torsadé à Pompon Laine", desc: "Torsades traditionnelles irlandaises et pompon en laine touffu", descFr: "Torsades traditionnelles irlandaises et pompon en laine touffu" }
     ]
   },
   {
     id: "casquette",
     category: "accessories",
     gender: "both",
-    nameEn: "Tailored Cap",
-    nameFr: "Casquette Stylée",
+    name: "Casquette",
+    nameFr: "Casquette",
     iconName: "cap",
     slot: "head",
-    styleQuestionEn: "Which cap profile matches your daytime energy?",
-    styleQuestionFr: "Quel profil de casquette correspond à votre allure ?",
+    styleQuestion: "Quel profil de casquette correspond à ton énergie du moment\u00A0?",
+    styleQuestionFr: "Quel profil de casquette correspond à ton énergie du moment\u00A0?",
     styles: [
-      { id: "baseball", nameEn: "Dad Cap Unstructured", nameFr: "Dad Cap Coton Déstructurée", descEn: "Soft curved brim, brass slider buckle, vintage washed cotton", descFr: "Visière courbée douce, boucle laiton réglable, coton lavé" },
-      { id: "snapback", nameEn: "Flat-Brim Structured Snapback", nameFr: "Snapback Visière Plate", descEn: "Stiff front crown panels, flat brim, urban streetwear energy", descFr: "Panneaux avant renforcés, visière plate, esprit hip-hop moderne" },
-      { id: "corduroy", nameEn: "Retro Corduroy 5-Panel", nameFr: "5 Panneaux Velours Côtelé", descEn: "Thick wale corduroy, camper five-panel profile, brass eyelets", descFr: "Velours grosses côtes d'atelier, profil 5 panneaux campeur" },
-      { id: "newsboy", nameEn: "Peaky Newsboy Baker Cap", nameFr: "Casquette Gavroche Feutre", descEn: "Eight-panel voluminous crown, button top, vintage Parisian", descFr: "Huit pans bouffants, bouton central, charme rétro parisien" }
+      { id: "baseball", name: "Dad Cap Coton Déstructurée", nameFr: "Dad Cap Coton Déstructurée", desc: "Visière courbée douce, boucle laiton réglable, coton lavé", descFr: "Visière courbée douce, boucle laiton réglable, coton lavé" },
+      { id: "snapback", name: "Snapback Visière Plate", nameFr: "Snapback Visière Plate", desc: "Panneaux avant renforcés, visière plate, esprit urbain moderne", descFr: "Panneaux avant renforcés, visière plate, esprit urbain moderne" },
+      { id: "corduroy", name: "5 Panneaux Velours Côtelé", nameFr: "5 Panneaux Velours Côtelé", desc: "Velours grosses côtes d'atelier, profil 5 panneaux campeur", descFr: "Velours grosses côtes d'atelier, profil 5 panneaux campeur" },
+      { id: "newsboy", name: "Casquette Gavroche Feutre", nameFr: "Casquette Gavroche Feutre", desc: "Huit pans bouffants, bouton central, charme rétro parisien", descFr: "Huit pans bouffants, bouton central, charme rétro parisien" }
     ]
   },
   {
     id: "chaussettes",
     category: "accessories",
     gender: "both",
-    nameEn: "Artisan Socks",
-    nameFr: "Chaussettes d'Atelier",
+    name: "Chaussettes",
+    nameFr: "Chaussettes",
     iconName: "socks",
     slot: "feet",
-    styleQuestionEn: "Which sock height and ribbing do you prefer?",
-    styleQuestionFr: "Quelle hauteur et quel tricotage préférez-vous pour vos pieds ?",
+    styleQuestion: "Quelle hauteur et quel tricotage préfères-tu pour tes pieds\u00A0?",
+    styleQuestionFr: "Quelle hauteur et quel tricotage préfères-tu pour tes pieds\u00A0?",
     styles: [
-      { id: "crew", nameEn: "Classic Ribbed Crew Sock", nameFr: "Mi-Bas Côtelé Classique", descEn: "Hits mid-calf, cushion terry sole, stays up all day in studio", descFr: "Tige mi-mollet, semelle bouclette amortissante, tient bien en place" },
-      { id: "ankle", nameEn: "Low Ankle Runner", nameFr: "Socquettes Basses Découverte", descEn: "Discreet ankle collar with anti-slip heel tab, sneaker ready", descFr: "Collet discret sous la malléole avec languette talon anti-frottement" },
-      { id: "striped", nameEn: "Retro Athletic Double Stripe", nameFr: "Sport Rétro Double Rayure", descEn: "Two contrast bands at the ribbed cuff, varsity 70s look", descFr: "Deux rayures contrastées sur le revers, allure collège vintage" },
-      { id: "long", nameEn: "Over-the-Calf Boot Sock", nameFr: "Chaussettes Hautes Bottines", descEn: "Warm knee-high coverage, honeycomb arch support", descFr: "Hauteur jusqu'au genou, maintien sous la voûte plantaire" }
+      { id: "crew", name: "Mi-Bas Côtelé Classique", nameFr: "Mi-Bas Côtelé Classique", desc: "Tige mi-mollet, semelle bouclette amortissante, confort absolu", descFr: "Tige mi-mollet, semelle bouclette amortissante, confort absolu" },
+      { id: "ankle", name: "Socquettes Basses Découverte", nameFr: "Socquettes Basses Découverte", desc: "Collet discret sous la malléole avec languette talon anti-frottement", descFr: "Collet discret sous la malléole avec languette talon anti-frottement" },
+      { id: "striped", name: "Sport Rétro Double Rayure", nameFr: "Sport Rétro Double Rayure", desc: "Deux rayures contrastées sur le revers, allure collège vintage", descFr: "Deux rayures contrastées sur le revers, allure collège vintage" },
+      { id: "long", name: "Chaussettes Hautes Bottines", nameFr: "Chaussettes Hautes Bottines", desc: "Hauteur jusqu'au genou, maintien doux sous la voûte plantaire", descFr: "Hauteur jusqu'au genou, maintien doux sous la voûte plantaire" }
     ]
   }
 ];
 
-// Explicit Slot Table Mapping for All Pieces
+// Tableau des Emplacements Vestimentaires (Slot Mapping)
 export const SLOT_TABLE = {
   // head: bonnet, casquette, chapeau, bandeau
   bonnet: "head",
@@ -528,7 +528,7 @@ export const SLOT_TABLE = {
   short: "bottom",
   jupe: "bottom",
 
-  // one-piece: robe (occupies top + bottom, so it removes any worn top and bottom)
+  // onepiece: robe (occupe haut + bas, remplace tout haut et bas porté), costume
   robe: "onepiece",
   costume: "onepiece",
 
@@ -537,7 +537,7 @@ export const SLOT_TABLE = {
   chaussures: "feet"
 };
 
-// Starter wardrobe pieces for initial delight
+// Pièces Initiales de l'Atelier
 export const STARTER_PIECES = [
   {
     id: "starter_chemise_terracotta",
@@ -547,14 +547,14 @@ export const STARTER_PIECES = [
     gender: "femme",
     colorId: "terracotta",
     colorHex: "#C2542B",
-    colorNameEn: "Terracotta Earth",
+    colorName: "Terre Cuite d'Atelier",
     colorNameFr: "Terre Cuite d'Atelier",
     styleId: "oversized",
     patternId: "stripes",
     embroideryText: "Mariem",
     threadColorHex: "#FFFDF6",
     craftedAt: "2026-11-20T14:30:00Z",
-    notes: "Mariem's personal oversized studio workshirt with drop shoulders and french seams."
+    notes: "La chemise d'atelier fétiche de Mariem, coupe ample aux épaules tombantes et coutures anglaises."
   },
   {
     id: "starter_pantalon_charcoal",
@@ -564,14 +564,14 @@ export const STARTER_PIECES = [
     gender: "both",
     colorId: "charcoal_slate",
     colorHex: "#3B3D43",
-    colorNameEn: "Charcoal Slate",
+    colorName: "Ardoise Anthracite",
     colorNameFr: "Ardoise Anthracite",
     styleId: "wide",
     patternId: "plain",
     embroideryText: "Studio 24",
     threadColorHex: "#E0B354",
     craftedAt: "2026-11-21T18:15:00Z",
-    notes: "High-waist double pleat trousers tailored for long drafting sessions."
+    notes: "Pantalon taille haute à doubles pinces conçu pour les longues séances à la table à dessin."
   },
   {
     id: "starter_bonnet_mustard",
@@ -581,13 +581,41 @@ export const STARTER_PIECES = [
     gender: "both",
     colorId: "mustard_ochre",
     colorHex: "#CCA02A",
-    colorNameEn: "Golden Ochre",
+    colorName: "Ocre Solaire & Moutarde",
     colorNameFr: "Ocre Solaire & Moutarde",
     styleId: "cuffed",
     patternId: "plain",
     embroideryText: "Amour",
     threadColorHex: "#FFFDF6",
     craftedAt: "2026-11-22T09:40:00Z",
-    notes: "Chunky ribbed watch cap hand-knitted during study breaks."
+    notes: "Bonnet douillet à revers tricoté main pendant les pauses de révision d'architecture."
   }
 ];
+
+// Helper pour retrouver le nom d'un vêtement en français
+export function getGarmentFrenchName(pieceId) {
+  const p = GARMENT_PIECES.find(item => item.id === pieceId);
+  return p ? p.nameFr : pieceId;
+}
+
+// Helper pour retrouver le nom d'une couleur en français
+export function getColorFrenchName(colorId, fallbackHex) {
+  const c = COLOR_PALETTE.find(item => item.id === colorId || item.hex.toLowerCase() === (fallbackHex || "").toLowerCase());
+  return c ? c.nameFr : (colorId || "Nuance d'Atelier");
+}
+
+// Helper pour retrouver le nom d'un motif en français
+export function getPatternFrenchName(patternId) {
+  const p = PATTERNS.find(item => item.id === patternId);
+  return p ? p.nameFr : "Uni";
+}
+
+// Helper pour retrouver le nom d'une coupe de style en français
+export function getStyleFrenchName(pieceId, styleId) {
+  const p = GARMENT_PIECES.find(item => item.id === pieceId);
+  if (p && p.styles) {
+    const s = p.styles.find(st => st.id === styleId);
+    if (s) return s.nameFr;
+  }
+  return styleId;
+}

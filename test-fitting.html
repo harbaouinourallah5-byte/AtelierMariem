@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Atelier Mariem — Visual Fitting & Anchor Verification Suite</title>
+  <title>Atelier Mariem — Banc d'Essai Virtuel & Validation des Repères Anatomiques</title>
 
   <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -283,34 +283,34 @@
   <header class="suite-header">
     <div class="suite-title-row">
       <div>
-        <h1>Visual Fitting & Shared Anchor Verification Suite</h1>
+        <h1>Banc d'Essai Virtuel & Validation des Repères Anatomiques</h1>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.2rem;">
-          Verified against shared <code>viewBox="0 0 400 800"</code> coordinate system for both female and male figures.
+          Vérification sur le repère de coordonnées partagé <code>viewBox="0 0 400 800"</code> pour les silhouettes femme et homme.
         </p>
       </div>
-      <span class="suite-badge">Verification Suite</span>
+      <span class="suite-badge">Banc d'Essai</span>
     </div>
 
     <!-- Live Controls Bar -->
     <div class="controls-bar">
       <div class="control-group">
-        <span>Global Model Gender:</span>
+        <span>Genre du Mannequin :</span>
         <button class="btn-toggle active" id="btn-toggle-femme">Femme</button>
         <button class="btn-toggle" id="btn-toggle-homme">Homme</button>
       </div>
 
       <div class="control-group">
-        <span>Skin Tone:</span>
-        <button class="btn-toggle active" data-tone="warm">Warm</button>
-        <button class="btn-toggle" data-tone="fair">Fair</button>
-        <button class="btn-toggle" data-tone="sand">Sand</button>
+        <span>Carnation :</span>
+        <button class="btn-toggle active" data-tone="warm">Dorée</button>
+        <button class="btn-toggle" data-tone="fair">Claire</button>
+        <button class="btn-toggle" data-tone="sand">Sable</button>
         <button class="btn-toggle" data-tone="caramel">Caramel</button>
-        <button class="btn-toggle" data-tone="deep">Deep</button>
+        <button class="btn-toggle" data-tone="deep">Ébène</button>
       </div>
 
       <div class="control-group">
-        <span>Anatomical Anchors:</span>
-        <button class="btn-toggle" id="btn-toggle-guides">Show Anchor Lines</button>
+        <span>Repères Anatomiques :</span>
+        <button class="btn-toggle" id="btn-toggle-guides">Afficher les Repères</button>
       </div>
     </div>
   </header>
@@ -318,36 +318,36 @@
   <!-- REQUIRED SPOTLIGHT TEST SECTION -->
   <section class="spotlight-section">
     <div class="section-head">
-      <h2>Required Spotlight Anchor Checks</h2>
-      <p>Explicit visual proof of the 3 required target verification cases</p>
+      <h2>Vérifications Spécifiques des Repères</h2>
+      <p>Démonstration visuelle des cas clés de positionnement anatomique</p>
     </div>
 
     <div class="spotlight-grid">
       <!-- 1. BONNET ON HEAD -->
       <div class="spotlight-card" id="card-bonnet-check">
-        <h3>1. Bonnet on Head (Not on Body)</h3>
-        <p class="sub">Verified: sits squarely on the head (Y: 52-110) with folded ribbed cuff</p>
+        <h3>1. Bonnet sur la Tête (Pas sur le Corps)</h3>
+        <p class="sub">Vérifié : positionné directement sur le sommet de la tête (Y : 52-110) avec revers côtelé</p>
         <div class="mannequin-viewport" id="viewport-bonnet"></div>
       </div>
 
       <!-- 2. DRESS ON FEMALE MODEL -->
       <div class="spotlight-card" id="card-dress-check">
-        <h3>2. Atelier Dress (Robe) on Female Model</h3>
-        <p class="sub">Verified: contours bust, defined waist (Y: 328), hips (Y: 395), & flows to midi hem</p>
+        <h3>2. Robe d'Atelier sur Modèle Femme</h3>
+        <p class="sub">Vérifié : galbe la poitrine, taille marquée (Y : 328), hanches fluides (Y : 395) et retombée midi</p>
         <div class="mannequin-viewport" id="viewport-dress"></div>
       </div>
 
       <!-- 3. SHIRT ON MALE MODEL -->
       <div class="spotlight-card" id="card-shirt-check">
-        <h3>3. Bespoke Shirt (Chemise) on Male Model</h3>
-        <p class="sub">Verified: crisp collar, broad shoulders (span: 170px), sleeves to wrists, & hip hem</p>
+        <h3>3. Chemise Sur-Mesure sur Modèle Homme</h3>
+        <p class="sub">Vérifié : col français net, carrure d'épaules (170px), manches aux poignets et bas de hanches</p>
         <div class="mannequin-viewport" id="viewport-shirt"></div>
       </div>
 
       <!-- 4. FULL OUTFIT MIX & MATCH -->
       <div class="spotlight-card" id="card-mix-check">
-        <h3>4. Full Mix & Match Layering</h3>
-        <p class="sub">Body &rarr; Socks &rarr; Trousers &rarr; Shirt &rarr; Jacket &rarr; Scarf &rarr; Beanie</p>
+        <h3>4. Superposition Complète des Pièces</h3>
+        <p class="sub">Corps &rarr; Chaussettes &rarr; Pantalon &rarr; Chemise &rarr; Veste &rarr; Écharpe &rarr; Bonnet</p>
         <div class="mannequin-viewport" id="viewport-mix"></div>
       </div>
     </div>
@@ -356,8 +356,8 @@
   <!-- FULL GARMENT MATRIX GRID (ALL 16 PIECES IN 3 COLORS) -->
   <section class="matrix-section">
     <div class="section-head">
-      <h2>Complete Garment Matrix (16 Pieces &times; 3 Colors)</h2>
-      <p>Every piece rendered in 3 curated tones on its designated anatomical body</p>
+      <h2>Matrice Complète des Vêtements (16 Pièces &times; 3 Teintes)</h2>
+      <p>Chaque pièce modélisée en 3 teintes sur sa silhouette anatomique désignée</p>
     </div>
 
     <div id="matrix-container"></div>
@@ -372,6 +372,24 @@
     let currentTone = "warm";
     let showGuides = false;
 
+    const CATEGORY_NAMES = {
+      tops: "Hauts",
+      bottoms: "Bas",
+      onepiece: "Pièces Uniques",
+      outerwear: "Manteaux & Vestes",
+      accessories: "Accessoires"
+    };
+
+    const SLOT_LABELS_FR = {
+      head: "Tête & Bonnet",
+      neck: "Cou & Écharpe",
+      top: "Haut",
+      bottom: "Bas",
+      onepiece: "Pièce Unique",
+      outerwear: "Manteau & Veste",
+      feet: "Chaussettes"
+    };
+
     // 3 Curated test colors for each piece
     const TEST_COLORS = [
       COLOR_PALETTE.find(c => c.id === "terracotta") || COLOR_PALETTE[0],
@@ -384,29 +402,29 @@
       const a = MODEL_ANCHORS[gender];
       return `
         <g class="anchor-guides-overlay" pointer-events="none">
-          <!-- Shoulders -->
+          <!-- Épaules -->
           <line x1="30" y1="${a.shoulders.y}" x2="370" y2="${a.shoulders.y}" class="guide-line" />
-          <text x="35" y="${a.shoulders.y - 3}" class="guide-label">SHOULDERS (${a.shoulders.y})</text>
+          <text x="35" y="${a.shoulders.y - 3}" class="guide-label">ÉPAULES (${a.shoulders.y})</text>
 
-          <!-- Bust / Chest -->
+          <!-- Poitrine -->
           <line x1="30" y1="${a.bust.y}" x2="370" y2="${a.bust.y}" class="guide-line" />
-          <text x="35" y="${a.bust.y - 3}" class="guide-label">BUST (${a.bust.y})</text>
+          <text x="35" y="${a.bust.y - 3}" class="guide-label">POITRINE (${a.bust.y})</text>
 
-          <!-- Waist -->
+          <!-- Taille -->
           <line x1="30" y1="${a.waist.y}" x2="370" y2="${a.waist.y}" class="guide-line" />
-          <text x="35" y="${a.waist.y - 3}" class="guide-label">WAIST (${a.waist.y})</text>
+          <text x="35" y="${a.waist.y - 3}" class="guide-label">TAILLE (${a.waist.y})</text>
 
-          <!-- Hips -->
+          <!-- Hanches -->
           <line x1="30" y1="${a.hips.y}" x2="370" y2="${a.hips.y}" class="guide-line" />
-          <text x="35" y="${a.hips.y - 3}" class="guide-label">HIPS (${a.hips.y})</text>
+          <text x="35" y="${a.hips.y - 3}" class="guide-label">HANCHES (${a.hips.y})</text>
 
-          <!-- Knees -->
+          <!-- Genoux -->
           <line x1="30" y1="${a.knees.y}" x2="370" y2="${a.knees.y}" class="guide-line" />
-          <text x="35" y="${a.knees.y - 3}" class="guide-label">KNEES (${a.knees.y})</text>
+          <text x="35" y="${a.knees.y - 3}" class="guide-label">GENOUX (${a.knees.y})</text>
 
-          <!-- Ankles -->
+          <!-- Chevilles -->
           <line x1="30" y1="${a.ankles.y}" x2="370" y2="${a.ankles.y}" class="guide-line" />
-          <text x="35" y="${a.ankles.y - 3}" class="guide-label">ANKLES (${a.ankles.y})</text>
+          <text x="35" y="${a.ankles.y - 3}" class="guide-label">CHEVILLES (${a.ankles.y})</text>
         </g>
       `;
     }
@@ -495,13 +513,16 @@
         const catPieces = GARMENT_PIECES.filter(p => p.category === cat);
         if (catPieces.length === 0) return "";
 
+        const catTitle = CATEGORY_NAMES[cat] || cat;
+
         return `
           <div class="matrix-category-group">
-            <h3 class="matrix-cat-title">${cat} (${catPieces.length} Garments)</h3>
+            <h3 class="matrix-cat-title">${catTitle} (${catPieces.length} ${catPieces.length > 1 ? "pièces" : "pièce"})</h3>
             <div class="matrix-items-row">
               ${catPieces.map(piece => {
                 const targetGender = piece.gender === "both" ? currentGender : piece.gender;
                 const slot = SLOT_TABLE[piece.id] || piece.slot;
+                const genderLabel = targetGender === "femme" ? "Femme" : "Homme";
 
                 return TEST_COLORS.map(color => {
                   const pData = {
@@ -521,8 +542,8 @@
                   return `
                     <div class="matrix-item-card">
                       <div class="matrix-item-header">
-                        <span class="matrix-item-name">${piece.nameEn}</span>
-                        <span class="matrix-slot-badge">${slot} • ${targetGender}</span>
+                        <span class="matrix-item-name">${piece.nameFr || piece.nameEn}</span>
+                        <span class="matrix-slot-badge">${SLOT_LABELS_FR[slot] || slot} • ${genderLabel}</span>
                       </div>
                       <div class="mannequin-viewport" style="width: 240px; height: 480px; border-radius: 120px 120px 8px 8px;">
                         ${cardSvg}
@@ -530,7 +551,7 @@
                       <div class="tri-color-row">
                         <span class="tri-color-dot" style="background-color: ${color.hex};"></span>
                       </div>
-                      <span class="color-label-tag">${color.nameEn}</span>
+                      <span class="color-label-tag">${color.nameFr || color.nameEn}</span>
                     </div>
                   `;
                 }).join("");
