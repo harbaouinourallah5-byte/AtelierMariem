@@ -408,21 +408,35 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 2px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: rgba(14, 23, 42, 0.6);
 }
 
-.cad-title {
-  font-size: 5px;
-  color: #38BDF8;
-  font-family: monospace;
+.cad-rect {
+  width: 44px;
+  height: 28px;
+  border: 1.5px solid #38BDF8;
+  border-radius: 2px;
 }
 
-.cad-dimension {
-  font-size: 6px;
-  color: #E2E8F0;
-  font-weight: 700;
-  align-self: center;
+.cad-grid-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(56, 189, 248, 0.3);
+}
+
+.cad-grid-v {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(56, 189, 248, 0.3);
 }
 
 .laptop-keyboard {
@@ -505,17 +519,14 @@
 }
 
 .textbook {
-  height: 16px;
-  border-radius: 2px;
+  height: 18px;
+  border-radius: 3px;
   display: flex;
   align-items: center;
-  padding: 0 6px;
-  font-size: 6px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #FFF;
+  padding: 0 8px;
   position: relative;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.18);
+  border-left: 4px solid rgba(255,255,255,0.25);
 }
 
 .book-1 { width: 125px; background: #182236; }
@@ -593,11 +604,11 @@
   box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
-/* ================= CENTRAL CHARACTER: MARIEM ================= */
+/* ================= CENTRAL CHARACTER: MARIEM (BEHIND DESK) ================= */
 .mariem-character-container {
   position: relative;
-  z-index: 10;
-  margin: 0 auto -20px;
+  z-index: 2; /* STRICTLY BEHIND THE DESK */
+  margin: 0 auto -75px; /* Lower chest tucks behind the 95px wooden desk front */
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -609,30 +620,27 @@
   transform: translateY(-4px);
 }
 
-.mariem-svg-holder {
-  width: 320px;
-  height: 410px;
-  filter: drop-shadow(0 14px 28px rgba(24, 22, 21, 0.12));
+.mariem-image-holder {
+  width: 250px;
+  height: 310px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  filter: drop-shadow(0 10px 24px rgba(24, 22, 21, 0.12));
 }
 
-/* Idle Character SVG Animations */
-.animated-wave {
-  transform-origin: 102px 335px;
-  animation: waveArm 3.4s ease-in-out infinite;
+.studio-mariem-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: mariemSlowBob 4.8s ease-in-out infinite;
+  pointer-events: auto;
 }
 
-@keyframes waveArm {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-8deg); }
-}
-
-.blink-anim {
-  animation: blinkEyes 4.5s infinite;
-}
-
-@keyframes blinkEyes {
-  0%, 94%, 98%, 100% { transform: scaleY(1); }
-  96% { transform: scaleY(0.08); }
+@keyframes mariemSlowBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 /* Thought Bubble Above Mariem */
@@ -674,27 +682,30 @@
   100% { transform: translateY(-5px); }
 }
 
-/* Tap Hint Pill */
+/* Tap Hint Pill: Positioned Cleanly BELOW the Desk (Never Covering Mariem) */
+.studio-hint-below-desk {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  z-index: 6;
+}
+
 .tap-hint-pill {
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
   background: var(--text-dark);
   color: #FFF;
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  height: 38px;
-  padding: 0 1.2rem;
+  height: 40px;
+  padding: 0 1.5rem;
   border-radius: var(--radius-full);
   box-shadow: 0 4px 18px rgba(24, 22, 21, 0.2);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  animation: pulseHint 2s infinite ease-in-out;
-  pointer-events: none;
-  white-space: nowrap;
+  gap: 0.55rem;
+  animation: pulseHint 2.4s infinite ease-in-out;
+  cursor: pointer;
 }
 
 .tap-hint-pill .hint-sparkle {

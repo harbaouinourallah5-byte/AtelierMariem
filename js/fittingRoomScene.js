@@ -101,25 +101,25 @@ export class FittingRoomController {
                   ${getFittingMannequinBaseSvg(outfit.gender, outfit.skinTone)}
 
                   <!-- Layer 2: Feet (Socks & Atelier Footwear) -->
-                  ${outfit.slots.feet ? getLayeredGarmentSvg(outfit.slots.feet, "feet", outfit.gender) : ""}
+                  ${outfit.slots.feet ? getLayeredGarmentSvg(outfit.slots.feet, outfit.gender) : ""}
 
                   <!-- Layer 3: Bottom (Pants, Jeans, Skirts, Shorts - if not onepiece) -->
-                  ${outfit.slots.bottom ? getLayeredGarmentSvg(outfit.slots.bottom, "bottom", outfit.gender) : ""}
+                  ${outfit.slots.bottom ? getLayeredGarmentSvg(outfit.slots.bottom, outfit.gender) : ""}
 
                   <!-- Layer 4: Top (Shirts, Sweaters, Tees, Hoodies - if not onepiece) -->
-                  ${outfit.slots.top ? getLayeredGarmentSvg(outfit.slots.top, "top", outfit.gender) : ""}
+                  ${outfit.slots.top ? getLayeredGarmentSvg(outfit.slots.top, outfit.gender) : ""}
 
                   <!-- Layer 5: One-Piece (Bespoke Dress or Full Suit) -->
-                  ${outfit.slots.onepiece ? getLayeredGarmentSvg(outfit.slots.onepiece, "onepiece", outfit.gender) : ""}
+                  ${outfit.slots.onepiece ? getLayeredGarmentSvg(outfit.slots.onepiece, outfit.gender) : ""}
 
                   <!-- Layer 6: Outerwear (Jackets & Overcoats) -->
-                  ${outfit.slots.outerwear ? getLayeredGarmentSvg(outfit.slots.outerwear, "outerwear", outfit.gender) : ""}
+                  ${outfit.slots.outerwear ? getLayeredGarmentSvg(outfit.slots.outerwear, outfit.gender) : ""}
 
                   <!-- Layer 7: Neck (Woven Scarf) -->
-                  ${outfit.slots.neck ? getLayeredGarmentSvg(outfit.slots.neck, "neck", outfit.gender) : ""}
+                  ${outfit.slots.neck ? getLayeredGarmentSvg(outfit.slots.neck, outfit.gender) : ""}
 
                   <!-- Layer 8: Head Accessories (Bonnet, Casquette) -->
-                  ${outfit.slots.head ? getLayeredGarmentSvg(outfit.slots.head, "head", outfit.gender) : ""}
+                  ${outfit.slots.head ? getLayeredGarmentSvg(outfit.slots.head, outfit.gender) : ""}
                 </svg>
 
                 <!-- Floor Stand Base -->

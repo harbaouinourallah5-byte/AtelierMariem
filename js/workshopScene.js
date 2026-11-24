@@ -5,7 +5,7 @@
 // Pinterest atelier aesthetic, uniform button heights, zero emojis
 // ==========================================================================
 
-import { getMariemSvg, getMariemAvatarImg } from "./characterSvg.js";
+import { getMariemAvatarImg } from "./characterSvg.js";
 import { getStandaloneGarmentSvg, getSvgPatternDefs } from "./garmentSvg.js";
 import { dialogueEngine } from "./dialogueEngine.js";
 import { icon } from "./icons.js";
@@ -78,14 +78,16 @@ export class WorkshopController {
               </div>
             </div>
 
-            <!-- Center: Mariem Leaning & Animated Machine -->
+            <!-- Center: Workbench with Mariem on Left & Machine on Right -->
             <div class="workshop-mariem-col">
-              <div class="mariem-sewing-holder" id="mariem-sewing-holder">
-                ${getMariemSvg("sewing", { width: "100%", height: "100%" })}
-              </div>
+              <div class="workshop-bench-stage">
+                <!-- Mariem Seated at Left of Sewing Machine Bench -->
+                <div class="mariem-sewing-holder" id="mariem-sewing-holder">
+                  ${getMariemAvatarImg("thinking", { className: "workshop-sewing-mariem", alt: "Mariem sewing at the atelier bench" })}
+                </div>
 
-              <!-- Animated Mechanical Sewing Machine Stage -->
-              <div class="animated-machine-bench">
+                <!-- Animated Mechanical Sewing Machine Stage on the Right -->
+                <div class="animated-machine-bench">
                 <svg viewBox="0 0 280 180" width="280" height="180" class="detailed-machine-svg">
                   ${getSvgPatternDefs("pat")}
                   <!-- Machine Table Base -->
@@ -121,6 +123,7 @@ export class WorkshopController {
                     <line x1="15" y1="132" x2="80" y2="132" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3 2" class="seam-line-stitch" />
                   </g>
                 </svg>
+                </div>
               </div>
             </div>
           </div>

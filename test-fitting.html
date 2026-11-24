@@ -365,8 +365,8 @@
 
   <!-- SCRIPT -->
   <script type="module">
-    import { GARMENT_PIECES, COLOR_PALETTE, SLOT_TABLE } from "./js/clothingData.js";
-    import { getFittingMannequinBaseSvg, getLayeredGarmentSvg, MODEL_ANCHORS, SKIN_TONES } from "./js/garmentSvg.js";
+    import { GARMENT_PIECES, COLOR_PALETTE, SLOT_TABLE } from "./js/clothingData.js?v=4";
+    import { getFittingMannequinBaseSvg, getLayeredGarmentSvg, getSvgPatternDefs, MODEL_ANCHORS, SKIN_TONES } from "./js/garmentSvg.js?v=4";
 
     let currentGender = "femme";
     let currentTone = "warm";
@@ -414,6 +414,7 @@
     function buildCompositeSvg(gender, tone, layers = []) {
       return `
         <svg viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg">
+          ${getSvgPatternDefs("pat")}
           ${getFittingMannequinBaseSvg(gender, tone)}
           ${layers.join("")}
           ${renderAnchorGuidesSvg(gender)}
@@ -433,7 +434,7 @@
         threadColorHex: "#FFFDF6"
       };
       const bonnetSvg = buildCompositeSvg(currentGender, currentTone, [
-        getLayeredGarmentSvg(bonnetPiece, "head", currentGender)
+        getLayeredGarmentSvg(bonnetPiece, currentGender)
       ]);
       document.getElementById("viewport-bonnet").innerHTML = bonnetSvg;
 
@@ -448,7 +449,7 @@
         threadColorHex: "#FFFDF6"
       };
       const dressSvg = buildCompositeSvg("femme", currentTone, [
-        getLayeredGarmentSvg(dressPiece, "onepiece", "femme")
+        getLayeredGarmentSvg(dressPiece, "femme")
       ]);
       document.getElementById("viewport-dress").innerHTML = dressSvg;
 
@@ -463,7 +464,7 @@
         threadColorHex: "#FFFDF6"
       };
       const shirtSvg = buildCompositeSvg("homme", currentTone, [
-        getLayeredGarmentSvg(shirtPiece, "top", "homme")
+        getLayeredGarmentSvg(shirtPiece, "homme")
       ]);
       document.getElementById("viewport-shirt").innerHTML = shirtSvg;
 
@@ -476,12 +477,12 @@
       const hatPiece = { pieceId: "bonnet", slot: "head", colorHex: "#CCA02A", styleId: "cuffed" };
 
       const mixSvg = buildCompositeSvg(currentGender, currentTone, [
-        getLayeredGarmentSvg(socksPiece, "feet", currentGender),
-        getLayeredGarmentSvg(pantsPiece, "bottom", currentGender),
-        getLayeredGarmentSvg(chemisePiece, "top", currentGender),
-        getLayeredGarmentSvg(jacketPiece, "outerwear", currentGender),
-        getLayeredGarmentSvg(scarfPiece, "neck", currentGender),
-        getLayeredGarmentSvg(hatPiece, "head", currentGender)
+        getLayeredGarmentSvg(socksPiece, currentGender),
+        getLayeredGarmentSvg(pantsPiece, currentGender),
+        getLayeredGarmentSvg(chemisePiece, currentGender),
+        getLayeredGarmentSvg(jacketPiece, currentGender),
+        getLayeredGarmentSvg(scarfPiece, currentGender),
+        getLayeredGarmentSvg(hatPiece, currentGender)
       ]);
       document.getElementById("viewport-mix").innerHTML = mixSvg;
     }
@@ -514,7 +515,7 @@
                   };
 
                   const cardSvg = buildCompositeSvg(targetGender, currentTone, [
-                    getLayeredGarmentSvg(pData, slot, targetGender)
+                    getLayeredGarmentSvg(pData, targetGender)
                   ]);
 
                   return `

@@ -4,7 +4,7 @@
 // blueprints, ambient window daylight & cohesive vector icon system
 // ==========================================================================
 
-import { getMariemSvg } from "./characterSvg.js";
+import { getMariemAvatarImg } from "./characterSvg.js";
 import { icon } from "./icons.js";
 import { t } from "./i18n.js";
 import { state } from "./state.js";
@@ -97,8 +97,22 @@ export function renderStudioScene(container) {
           </div>
         </div>
 
-        <!-- Mariem's Drafting & Sewing Workstation Desk -->
-        <div class="studio-desk-area">
+        <!-- Central Character Stage: Mariem (Seated Behind Desk) -->
+        <div class="mariem-character-container" id="mariem-character-trigger" role="button" tabindex="0" aria-label="Tap Mariem to start conversation">
+          <!-- Idle Thought Bubble Floating Above Her -->
+          <div class="mariem-speech-bubble" id="mariem-idle-bubble">
+            <span class="bubble-sparkle">${icon("needle")}</span>
+            <span class="bubble-content" data-i18n="studio_idle_thought">${t("studio_idle_thought")}</span>
+          </div>
+
+          <!-- Mariem's Illustrated PNG Avatar (Behind Desk, Head & Shoulders Sit Comfortably Above) -->
+          <div class="mariem-image-holder">
+            ${getMariemAvatarImg("neutral", { className: "studio-mariem-portrait", alt: "Mariem in her studio" })}
+          </div>
+        </div>
+
+        <!-- Mariem's Drafting & Sewing Workstation Desk (In Front of Character) -->
+        <div class="studio-desk-area" id="studio-desk-trigger" role="button" tabindex="0" aria-label="Start custom sewing order">
           <!-- Studio Wooden Desk Tabletop -->
           <div class="wooden-desk">
             <!-- Brass Desk Lamp with Warm Cone of Light -->
@@ -109,13 +123,13 @@ export function renderStudioScene(container) {
               <div class="lamp-light-cone"></div>
             </div>
 
-            <!-- Laptop (Open with Architectural CAD Blueprint Screen) -->
+            <!-- Laptop (Open with Minimalist Architectural CAD Wireframe) -->
             <div class="study-laptop">
               <div class="laptop-screen">
                 <div class="blueprint-grid">
                   <span class="cad-rect"></span>
-                  <span class="cad-dimension">12.5m</span>
-                  <span class="cad-title">ARCHI_STUDIO_FINAL.dwg</span>
+                  <span class="cad-grid-h"></span>
+                  <span class="cad-grid-v"></span>
                 </div>
               </div>
               <div class="laptop-keyboard"></div>
@@ -131,23 +145,19 @@ export function renderStudioScene(container) {
               </div>
             </div>
 
-            <!-- Architecture Textbooks Stack with Minimal Index Tabs -->
+            <!-- Architecture Textbooks Stack with Minimalist Color-Blocked Spines -->
             <div class="textbooks-stack">
               <div class="textbook book-3">
-                <span class="book-spine">STRUCTURAL MECHANICS</span>
                 <span class="post-it pink"></span>
               </div>
               <div class="textbook book-2">
-                <span class="book-spine">HISTORY OF ART & ARCHITECTURE</span>
                 <span class="post-it yellow"></span>
               </div>
-              <div class="textbook book-1">
-                <span class="book-spine">TEXTILE PATTERNS & DRAPE</span>
-              </div>
+              <div class="textbook book-1"></div>
             </div>
 
             <!-- Vintage-Modern Sewing Machine on Table -->
-            <div class="studio-sewing-machine" id="studio-machine-trigger" role="button" tabindex="0" aria-label="Start custom sewing order">
+            <div class="studio-sewing-machine">
               <svg viewBox="0 0 160 120" width="130" height="98" class="machine-svg">
                 <!-- Machine Cast Body -->
                 <path d="M20,105 L140,105 L140,95 L115,95 L115,35 C115,22 105,18 90,18 L35,18 C25,18 20,24 20,35 L20,65 L45,65 L45,35 L95,35 L95,95 L20,95 Z" fill="#2E3A3F" />
@@ -177,25 +187,13 @@ export function renderStudioScene(container) {
             <div class="fabric-roll roll-navy"></div>
             <div class="woven-basket-front"></div>
           </div>
+        </div>
 
-          <!-- Central Character Stage: Mariem -->
-          <div class="mariem-character-container" id="mariem-character-trigger" role="button" tabindex="0" aria-label="Tap Mariem to start conversation">
-            <!-- Idle Thought Bubble Floating Above Her -->
-            <div class="mariem-speech-bubble" id="mariem-idle-bubble">
-              <span class="bubble-sparkle">${icon("needle")}</span>
-              <span class="bubble-content" data-i18n="studio_idle_thought">${t("studio_idle_thought")}</span>
-            </div>
-
-            <!-- Mariem's Stylized SVG Avatar (Greeting / Idle Pose) -->
-            <div class="mariem-svg-holder">
-              ${getMariemSvg("greeting", { width: "100%", height: "100%" })}
-            </div>
-
-            <!-- Pulsing Tap Prompt (Centered, Clean Pro-Coded Badge) -->
-            <div class="tap-hint-pill">
-              <span class="hint-sparkle">${icon("sparkles")}</span>
-              <span data-i18n="studio_hint">${t("studio_hint")}</span>
-            </div>
+        <!-- Tap Prompt Pill: Positioned Cleanly BELOW the Desk (Never Covering Mariem) -->
+        <div class="studio-hint-below-desk">
+          <div class="tap-hint-pill" id="studio-hint-pill-trigger" role="button" tabindex="0">
+            <span class="hint-sparkle">${icon("sparkles")}</span>
+            <span data-i18n="studio_hint">${t("studio_hint")}</span>
           </div>
         </div>
 
@@ -238,6 +236,16 @@ export function renderStudioScene(container) {
         startOrderHandler();
       }
     });
+  }
+
+  const hintPillTrigger = container.querySelector("#studio-hint-pill-trigger");
+  if (hintPillTrigger) {
+    hintPillTrigger.addEventListener("click", startOrderHandler);
+  }
+
+  const deskTrigger = container.querySelector("#studio-desk-trigger");
+  if (deskTrigger) {
+    deskTrigger.addEventListener("click", startOrderHandler);
   }
 
   const machineTrigger = container.querySelector("#studio-machine-trigger");
